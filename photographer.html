@@ -13,13 +13,15 @@
 
 <body>
   <header>
-    <img src="assets/images/logo.png" class="logo" title="Logo Fisheye">
+    <a href="index.html"><img src="assets/images/logo.png" class="logo" title="Fisheye Logo" aria-label="Logo Fisheye"
+        alt="Logo Fisheye"></a>
   </header>
   <main id="main">
     <div class="photograph-header">
+      <div class="photograph-infos"></div>
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <div class="photograph-photo"></div>
     </div>
-
   </main>
   <div id="contact_modal">
     <div class="modal">
@@ -29,8 +31,14 @@
       </header>
       <form>
         <div>
-          <label>Prénom</label>
-          <input />
+          <label for="prenom">Prénom</label>
+          <input type="text" id="prenom" class="prenom" title="prenom">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" class="nom" title="nom">
+          <label for="email">Email</label>
+          <input type="text" id="email" class="email" title="email">
+          <label for="message">Votre message</label>
+          <input type="text" id="message" class="message" title="message">
         </div>
         <button type="button" class="contact_button">Envoyer</button>
       </form>
