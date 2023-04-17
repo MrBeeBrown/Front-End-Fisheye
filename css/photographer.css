@@ -71,7 +71,7 @@
 }
 
 .content {
-    margin: 0 100px;
+    margin: 0 100px 100px 100px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 2rem;
@@ -100,21 +100,22 @@ video {
     color: #901C1C;
     font-weight: 400;
     font-size: 1rem;
+    width: 100%;
 }
 
 .header_like {
     font-weight: 700;
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* .contact_modal {
-    background-color: #494645;
+.contact_modal {
+    background-color: #777575;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-} */
+}
 
 .modal {
     border-radius: 5px;
@@ -128,19 +129,30 @@ video {
     margin: auto;
 }
 
-.modal header {
-    justify-content: space-between;
+.header_form {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+.modal .header_form .contact {
+    display: flex;
+    /* justify-content: space-between; */
     width: 100%;
 }
 
-.modal header img {
+.modal .header_form .contact img {
     cursor: pointer;
 }
 
-.modal header h2 {
+.modal .header_form .contact h2 {
     font-size: 64px;
     font-weight: normal;
     text-align: center;
+}
+
+.photographer {
+    display: inline;
 }
 
 form {
@@ -168,4 +180,8 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+.message {
+    height: 12rem;
 }

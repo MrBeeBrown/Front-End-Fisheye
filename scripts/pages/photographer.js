@@ -16,7 +16,6 @@ async function getUserData(UserId) {
     if (photographer.id == UserId) {
       photographerData(photographer);
     }
-
   });
 };
 
@@ -28,7 +27,6 @@ async function getUserPhotos(UserId) {
     if (photos.photographerId == UserId) {
       UserPhotos.push(photos);
     }
-    /* console.log(UserPhotos); */
   });
   photographerPhotos(UserPhotos);
 };
@@ -41,6 +39,11 @@ function photographerData(data) {
   const header_infos = document.querySelector('.photograph-infos');
   const header_photo = document.querySelector('.photograph-photo');
   const img = document.createElement('img');
+  const photographer = document.createElement("p");
+  const header_form = document.querySelector(".header_form");
+  photographer.setAttribute("class", "photographer");
+  photographer.textContent = name;
+  header_form.appendChild(photographer);
   header_photo.append(img);
   img.setAttribute("src", picture);
   img.setAttribute("alt", `Photo of ${name}`);
@@ -70,6 +73,8 @@ function photographerPhotos(data) {
   const data_title = document.createElement("option");
   const data_date = document.createElement("option");
   const div_content = document.createElement("div");
+  /*   const like_info = document.createElement("div");
+    const price_info = document.createElement("div"); */
   const media_path = "/assets/images/";
   let img;
   let videos;
@@ -78,9 +83,13 @@ function photographerPhotos(data) {
   let div_header;
   let header_title;
   let header_like;
+  let heart;
+  /*   let price_like_data; */
 
   //Ajout de contenu dans les sections HTML
   div_content.setAttribute("class", "content");
+  /*   like_info.setAttribute("class", "likes");
+    price_info.setAttribute("class", "price"); */
   filter.setAttribute("class", "filter");
   sortby.textContent = "Trier par :"
   data_popularity.textContent = "Popularité";
@@ -91,6 +100,9 @@ function photographerPhotos(data) {
   select.appendChild(data_title);
   filter.appendChild(sortby);
   filter.appendChild(select);
+  /*   price_like_data = document.createElement("div");
+    price_like_data.setAttribute("class", "like_price");
+    like_info.appendChild() */
 
   //Affichage du contenu dans le main
   main.appendChild(filter);
@@ -106,7 +118,11 @@ function photographerPhotos(data) {
       header_title.textContent = data[i].title;
       header_like = document.createElement("div");
       header_like.setAttribute("class", "header_like");
+      heart = document.createElement("i");
+      heart.setAttribute("class", "heart");
+      heart.setAttribute("class", "fa-sharp fa-solid fa-heart")
       header_like.textContent = data[i].likes;
+      header_like.appendChild(heart);
       img = document.createElement("img");
       img.setAttribute("src", media_path + data[i].image);
       img.setAttribute("alt", data[i].title);
@@ -117,7 +133,6 @@ function photographerPhotos(data) {
       div_media.appendChild(div_header);
       div_content.appendChild(div_media);
       main.appendChild(div_content);
-      console.log(data[i]);
     } else {
       div_media = document.createElement("div");
       div_media.setAttribute("class", "media");
@@ -128,7 +143,11 @@ function photographerPhotos(data) {
       header_title.textContent = data[i].title;
       header_like = document.createElement("div");
       header_like.setAttribute("class", "header_like");
+      heart = document.createElement("i");
+      heart.setAttribute("class", "heart");
+      heart.setAttribute("class", "fa-sharp fa-solid fa-heart")
       header_like.textContent = data[i].likes;
+      header_like.appendChild(heart);
       videos = document.createElement("video");
       videos.setAttribute("controls", "");
       videos_src = document.createElement("source");
@@ -140,7 +159,6 @@ function photographerPhotos(data) {
       div_header.appendChild(header_like);
       div_media.appendChild(videos);
       div_media.appendChild(div_header);
-      console.log(data[i]);
       div_content.appendChild(div_media);
       main.appendChild(div_content);
     }
