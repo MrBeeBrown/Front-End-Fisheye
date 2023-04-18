@@ -112,9 +112,10 @@ video {
 }
 
 .contact_modal {
-    background-color: #777575;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    background-color: rgb(212, 21, 21);
+    background-blend-mode: darken;
+    z-index: 3;
 }
 
 .modal {
@@ -127,32 +128,35 @@ video {
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    z-index: 4;
+
 }
 
 .header_form {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
-}
-
-.modal .header_form .contact {
-    display: flex;
-    /* justify-content: space-between; */
     width: 100%;
+    display: grid;
+    grid-template:
+        "a b"100% "c c"auto;
+    padding: 0 0 3rem 0;
 }
 
-.modal .header_form .contact img {
+.modal .header_form img {
     cursor: pointer;
 }
 
-.modal .header_form .contact h2 {
+.modal .header_form h2 {
     font-size: 64px;
     font-weight: normal;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-.photographer {
-    display: inline;
+.modal .header_form p {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
 }
 
 form {
@@ -160,6 +164,7 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+    padding: 3rem 0 0 0;
 }
 
 form label {
