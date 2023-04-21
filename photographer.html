@@ -26,14 +26,14 @@
       <div class="photograph-photo"></div>
     </div>
   </main>
-  <div id="contact_modal">
-    <div class="modal">
-      <header class="header_form">
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" title="Fermer">
-      </header>
-      <form>
-        <div>
+  <div class="modal_container">
+    <div class="modal_background">
+      <div class="modal" aria-hidden="true" aria-label="modal" role="dialog">
+        <header class="header_form">
+          <h2>Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" title="Fermer">
+        </header>
+        <form>
           <label for="prenom">Prénom</label>
           <input type="text" id="prenom" class="prenom" title="prenom">
           <label for="nom">Nom</label>
@@ -42,12 +42,12 @@
           <input type="text" id="email" class="email" title="email">
           <label for="message">Votre message</label>
           <input type="text" id="message" class="message" title="message">
-        </div>
-        <button type="button" class="contact_button">Envoyer</button>
-      </form>
+          <button type="button" class="contact_button">Envoyer</button>
+        </form>
+      </div>
     </div>
   </div>
-  <script src="/scripts/pages/photographer.js"></script>
+  <script src="/scripts/pages/photographer.js" type="module"></script>
   <script src="/scripts/utils/contactForm.js"></script>
 </body>
 
