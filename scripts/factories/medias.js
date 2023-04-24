@@ -1,11 +1,15 @@
+//Icone de fermeture de la lightBox
+const close = document.querySelector(".close_lightBox");
+close.addEventListener("click", closeLightBox);
+
 //Récupération des infos du photographe
 export async function getPhotographer(photographers, UserId) {
   photographers.forEach((photographer) => {
     if (photographer.id == UserId) {
       printPhotographerInfos(photographer);
     }
-  });
-};
+  })
+}
 
 //Récupération des images du photographe
 export async function getMedias(media, UserId) {
@@ -14,9 +18,9 @@ export async function getMedias(media, UserId) {
     if (photos.photographerId == UserId) {
       UserPhotos.push(photos);
     }
-  });
+  })
   printPhotographerMedias(UserPhotos);
-};
+}
 
 //Affichage des infos du photographe
 function printPhotographerInfos(data) {
@@ -30,7 +34,6 @@ function printPhotographerInfos(data) {
   const header_form = document.querySelector(".header_form");
   const price_info = document.createElement("div");
   const price_like_data = document.createElement("div");
-
   photographer.setAttribute("class", "photographer");
   photographer.textContent = name;
   header_form.appendChild(photographer);
@@ -40,7 +43,6 @@ function printPhotographerInfos(data) {
   img.setAttribute("aria-label", `Photo of ${name}`);
   price_info.setAttribute("class", "user__price");
   price_like_data.setAttribute("class", "like_price");
-
   const h2 = document.createElement('h2');
   h2.textContent = name;
   const h3 = document.createElement("h3");
@@ -70,10 +72,8 @@ function printPhotographerMedias(data) {
   const medias_title = document.createElement("option");
   const medias_date = document.createElement("option");
   const div_content = document.createElement("div");
-
   const price_like = document.querySelector(".like_price");
   const like_info = document.createElement("div");
-
   const media_path = "/assets/images/";
   let img;
   let videos;
@@ -84,15 +84,12 @@ function printPhotographerMedias(data) {
   let header_like;
   let heart;
   heart = document.createElement("i");
-  heart.setAttribute("class", "heart");
-  heart.setAttribute("class", "fa-sharp fa-solid fa-heart");
-  /*   let price_like_data; */
+  heart.setAttribute("class", "fa-sharp fa-solid fa-heart heart");
 
   //Ajout de contenu dans les sections HTML
   div_content.setAttribute("class", "content");
-
   like_info.setAttribute("class", "likes");
-
+  let p = document.createElement("p");
   filter.setAttribute("class", "filter");
   sortby.textContent = "Trier par :"
   medias_popularity.textContent = "Popularité";
@@ -108,11 +105,11 @@ function printPhotographerMedias(data) {
   for (let i = 0; i < data.length; i++) {
     nbrLike += data[i].likes;
   }
-  like_info.textContent = nbrLike;
+  p.textContent = nbrLike;
+  like_info.appendChild(p);
   like_info.appendChild(heart);
   price_like.appendChild(like_info);
 
-  //Affichage du contenu dans le main
   main.appendChild(filter);
 
   for (let i = 0; i < data.length; i++) {
@@ -126,14 +123,18 @@ function printPhotographerMedias(data) {
       header_title.textContent = data[i].title;
       header_like = document.createElement("div");
       header_like.setAttribute("class", "header_like");
-      header_like.textContent = data[i].likes;
+      let p = document.createElement("p");
+      p.setAttribute("class", "number_likes");
+      p.textContent = data[i].likes;
+      header_like.appendChild(p);
       heart = document.createElement("i");
-      heart.setAttribute("class", "heart");
       heart.setAttribute("class", "fa-sharp fa-solid fa-heart");
+      heart.setAttribute("id", "heart");
       header_like.appendChild(heart);
       img = document.createElement("img");
       img.setAttribute("src", media_path + data[i].image);
       img.setAttribute("alt", data[i].title);
+      img.addEventListener("click", openLightBox);
       div_media.appendChild(img);
       div_header.appendChild(header_title);
       div_header.appendChild(header_like);
@@ -151,13 +152,17 @@ function printPhotographerMedias(data) {
       header_title.textContent = data[i].title;
       header_like = document.createElement("div");
       header_like.setAttribute("class", "header_like");
+      let p = document.createElement("p");
+      p.setAttribute("class", "number_likes");
+      p.textContent = data[i].likes;
       heart = document.createElement("i");
-      heart.setAttribute("class", "heart");
       heart.setAttribute("class", "fa-sharp fa-solid fa-heart")
-      header_like.textContent = data[i].likes;
+      heart.setAttribute("id", "heart");
+      header_like.appendChild(p);
       header_like.appendChild(heart);
       videos = document.createElement("video");
       videos.setAttribute("controls", "");
+      videos.addEventListener("click", openLightBox);
       videos_src = document.createElement("source");
       videos_src.setAttribute("src", media_path + data[i].video);
       videos_src.setAttribute("type", "video/mp4");
@@ -170,6 +175,65 @@ function printPhotographerMedias(data) {
       div_content.appendChild(div_media);
       main.appendChild(div_content);
     }
-  };
+  }
 }
 
+//Mise à jour des likes pour les médias
+export function likes() {
+  const liked = document.querySelectorAll("#heart");
+  let mediaArray = [];
+  liked.forEach((e) => {
+    e.addEventListener("click", () => {
+      if (!mediaArray.includes(e.parentElement.parentElement.parentElement.childNodes[0].alt)) {
+        let update = parseInt(e.parentElement.textContent) + 1;
+        const totalLikes = document.querySelector(".likes");
+        totalLikes.childNodes[0].textContent = parseInt(totalLikes.childNodes[0].textContent) + 1;
+        e.parentElement.childNodes[0].textContent = update.toString();
+        mediaArray.push(e.parentElement.parentElement.parentElement.childNodes[0].alt);
+      }
+    });
+  });
+};
+
+//Création de la galerie d'images
+export function galerie(medias, userId) {
+  const lightBox = document.querySelector(".lightBox_data");
+  for (let i = 0; i < medias.length; i++) {
+    if (medias[i].image) {
+      if (medias[i].photographerId == userId) {
+        const img = document.createElement("img");
+        img.setAttribute("src", "/assets/images/" + medias[i].image);
+        img.setAttribute("alt", medias[i].title);
+        img.setAttribute("hidden", "");
+        img.setAttribute("class", "lightBox_media");
+        lightBox.appendChild(img);
+      }
+    } else {
+      if (medias[i].photographerId == userId) {
+        const videos = document.createElement("video");
+        videos.setAttribute("controls", "");
+        videos.setAttribute("hidden", "");
+        videos.setAttribute("class", "lightBox_media");
+        const videos_src = document.createElement("source");
+        videos_src.setAttribute("src", "/assets/images/" + medias[i].video);
+        videos_src.setAttribute("type", "video/mp4");
+        videos.appendChild(videos_src);
+        lightBox.appendChild(videos);
+      }
+    }
+  }
+}
+
+function openLightBox() {
+  const lightBox = document.querySelector(".lightBox_container");
+  lightBox.style.display = "block";
+  /* const media = document.querySelectorAll(".lightBox_media");
+  media.forEach((e) => {
+    console.log(media);
+  }); */
+}
+
+function closeLightBox() {
+  const lightBox = document.querySelector(".lightBox_container");
+  lightBox.style.display = "none";
+}

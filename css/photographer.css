@@ -123,6 +123,7 @@ video {
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .media_infos {
@@ -135,12 +136,20 @@ video {
     width: 100%;
 }
 
+.fa-heart {
+    cursor: pointer;
+}
+
 .header_like {
     font-weight: 700;
-    width: 15%;
+    width: 20%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.header_title {
+    width: 80%;
 }
 
 .modal_container {
@@ -164,6 +173,8 @@ video {
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
+    max-width: 600px;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -179,6 +190,30 @@ video {
     align-items: left;
     justify-content: space-between;
     gap: 1rem;
+}
+
+.formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: #FAFAFA;
+    color: #e54858;
+    opacity: 0;
+    display: block;
+    margin: 7px 0;
+    padding: .3rem;
+    line-height: 1;
+    transition: 0.3s;
+    width: fit-content;
+    -moz-fit-content: fit-content;
+}
+
+.formData[data-error-visible="true"]::after {
+    opacity: 1;
+}
+
+.formData[data-error-visible="true"] .text-control {
+    outline: 4px solid #e54858;
 }
 
 .header_form {
@@ -216,13 +251,17 @@ form {
     padding: 3rem 0 0 0;
 }
 
-form label {
+form .formData {
+    width: 100%;
+}
+
+form .formData label {
     color: #312E2E;
     font-size: 1.8rem;
     margin-top: 1rem;
 }
 
-form input {
+form .formData input {
     width: 100%;
     height: 3rem;
     font-size: 2rem;
@@ -230,6 +269,74 @@ form input {
     border-radius: 5px;
 }
 
+textarea {
+    width: 100%;
+    font-size: 2rem;
+    resize: none;
+}
+
 .message {
     height: 12rem;
+}
+
+.send_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.lightBox_container {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+}
+
+.lightBox_background {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+}
+
+.lightBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightBox_data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    z-index: 3;
+}
+
+.lightBox img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+}
+
+.lightBox video {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+}
+
+.close_lightBox {
+    position: absolute;
+    top: 30px;
+    right: 30px;
 }

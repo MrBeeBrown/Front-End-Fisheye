@@ -34,16 +34,39 @@
           <img src="assets/icons/close.svg" onclick="closeModal()" title="Fermer">
         </header>
         <form>
-          <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" class="prenom" title="prenom">
-          <label for="nom">Nom</label>
-          <input type="text" id="nom" class="nom" title="nom">
-          <label for="email">Email</label>
-          <input type="text" id="email" class="email" title="email">
-          <label for="message">Votre message</label>
-          <input type="text" id="message" class="message" title="message">
-          <button type="button" class="contact_button">Envoyer</button>
+          <div class="formData" data-error="Veuillez entrer 2 caractères minimum et pas de chiffres.">
+            <label for="prenom">Prénom</label>
+            <input class="text-control" type="text" id="prenom" class="prenom" title="prenom">
+          </div>
+
+          <div class="formData" data-error="Veuillez entrer 2 caractères minimum et pas de chiffres.">
+            <label for="nom">Nom</label>
+            <input class="text-control" type="text" id="nom" class="nom" title="nom">
+          </div>
+
+          <div class="formData" data-error="L'adresse mail saisie n'est pas correcte.">
+            <label for="email">Email</label>
+            <input class="text-control" type="text" id="email" class="email" title="email">
+          </div>
+
+          <div class="formData" data-error="Merci de renseigner votre message.">
+            <label for="message">Votre message</label>
+            <textarea class="text-control" id="message" class="message" title="message" name="message"
+              rows="6"></textarea>
+          </div>
+
+          <button type="button" class="send_button">Envoyer</button>
         </form>
+      </div>
+    </div>
+  </div>
+  <div class="lightBox_container">
+    <div class="lightBox_background">
+      <div class="lightBox">
+        <i class="fa-solid fa-chevron-left fa-2xl"></i>
+        <div class="lightBox_data"></div>
+        <i class="fa-solid fa-chevron-right fa-2xl"></i>
+        <i class="fa-solid fa-square-xmark fa-2xl close_lightBox"></i>
       </div>
     </div>
   </div>
