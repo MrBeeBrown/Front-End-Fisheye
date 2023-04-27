@@ -1,5 +1,6 @@
 import { api } from "../api/api.js";
-import { getPhotographer } from "../factories/medias.js";
+import { photographerInfo } from "../factories/photographerFactory.js";
+import { photographerMedia } from "../factories/mediaFactory.js"
 import { getMedias } from "../factories/medias.js";
 import { likes } from "../factories/medias.js";
 import { galerie } from "../factories/medias.js";
@@ -10,7 +11,10 @@ const id = new URL(location.href).searchParams.get("id");
 //Récupération des données
 const { media, photographers } = await api();
 
-getPhotographer(photographers, id);
-getMedias(media, id);
-likes();
-galerie(media, id);
+
+photographerInfo(photographers, id);
+photographerMedia(media, id);
+/* getMedias(media, id); */
+
+/* likes();
+galerie(media, id); */

@@ -2,15 +2,6 @@
 const close = document.querySelector(".close_lightBox");
 close.addEventListener("click", closeLightBox);
 
-//Récupération des infos du photographe
-export async function getPhotographer(photographers, UserId) {
-  photographers.forEach((photographer) => {
-    if (photographer.id == UserId) {
-      printPhotographerInfos(photographer);
-    }
-  })
-}
-
 //Récupération des images du photographe
 export async function getMedias(media, UserId) {
   let UserPhotos = [];
@@ -20,43 +11,6 @@ export async function getMedias(media, UserId) {
     }
   })
   printPhotographerMedias(UserPhotos);
-}
-
-//Affichage des infos du photographe
-function printPhotographerInfos(data) {
-  const { name, portrait, id, city, country, tagline, price } = data;
-
-  const picture = `assets/photographers/${portrait}`;
-  const header_infos = document.querySelector('.photograph-infos');
-  const header_photo = document.querySelector('.photograph-photo');
-  const img = document.createElement('img');
-  const photographer = document.createElement("p");
-  const header_form = document.querySelector(".header_form");
-  const price_info = document.createElement("div");
-  const price_like_data = document.createElement("div");
-  photographer.setAttribute("class", "photographer");
-  photographer.textContent = name;
-  header_form.appendChild(photographer);
-  header_photo.append(img);
-  img.setAttribute("src", picture);
-  img.setAttribute("alt", `Photo of ${name}`);
-  img.setAttribute("aria-label", `Photo of ${name}`);
-  price_info.setAttribute("class", "user__price");
-  price_like_data.setAttribute("class", "like_price");
-  const h2 = document.createElement('h2');
-  h2.textContent = name;
-  const h3 = document.createElement("h3");
-  h3.textContent = city + ", " + country;
-  const TagLine = document.createElement("p");
-  TagLine.textContent = tagline;
-  TagLine.classList.add("tagline");
-  header_infos.appendChild(h2);
-  header_infos.appendChild(h3);
-  header_infos.appendChild(TagLine);
-  price_info.textContent = price + "€ / jour";
-  price_like_data.appendChild(price_info);
-  const main = document.getElementById("main");
-  main.appendChild(price_like_data);
 }
 
 //Affichage des médias du photographe
@@ -72,7 +26,7 @@ function printPhotographerMedias(data) {
   const medias_title = document.createElement("option");
   const medias_date = document.createElement("option");
   const div_content = document.createElement("div");
-  const price_like = document.querySelector(".like_price");
+  /* const price_like = document.querySelector(".like_price"); */
   const like_info = document.createElement("div");
   const media_path = "/assets/images/";
   let img;
@@ -108,7 +62,7 @@ function printPhotographerMedias(data) {
   p.textContent = nbrLike;
   like_info.appendChild(p);
   like_info.appendChild(heart);
-  price_like.appendChild(like_info);
+  /* price_like.appendChild(like_info); */
 
   main.appendChild(filter);
 
