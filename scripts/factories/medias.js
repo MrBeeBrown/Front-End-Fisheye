@@ -2,17 +2,6 @@
 const close = document.querySelector(".close_lightBox");
 close.addEventListener("click", closeLightBox);
 
-//Récupération des images du photographe
-export async function getMedias(media, UserId) {
-  let UserPhotos = [];
-  media.forEach((photos) => {
-    if (photos.photographerId == UserId) {
-      UserPhotos.push(photos);
-    }
-  })
-  printPhotographerMedias(UserPhotos);
-}
-
 //Affichage des médias du photographe
 function printPhotographerMedias(data) {
   const { date, id, image, likes, photographerId, price, title, video } = data;
