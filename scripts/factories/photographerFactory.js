@@ -3,11 +3,11 @@ export function photographerInfo(photographers, id) {
   //Sélection du photographe en fonction de l'id de l'URL
   photographers.forEach((photographer) => {
     if (photographer.id == id) {
-      printInfos(photographer);
+      printInfoPhotographer(photographer);
     }
   })
 
-  function printInfos(data) {
+  function printInfoPhotographer(data) {
     const { name, portrait, id, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;

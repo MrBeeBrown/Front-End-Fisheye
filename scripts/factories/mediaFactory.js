@@ -1,49 +1,73 @@
-import { printImage } from "../factories/imagesFactory.js";
-import { printVideo } from "../factories/videoFactory.js";
+import { afficherImage } from "../factories/imagesFactory.js";
+import { afficherVideo } from "../factories/videoFactory.js";
 
 export function photographerMedia(medias, id) {
 
-  //Récupération des images du photographe
-
-  let UserPhotos = [];
+  //Récupération des images du photographe en fonction de l'id
+  let userPhotos = [];
   medias.forEach((photos) => {
     if (photos.photographerId == id) {
-      UserPhotos.push(photos);
+      userPhotos.push(photos);
     }
   })
-  printMedias(UserPhotos);
 
-  function printMedias(data) {
-    const { date, id, image, likes, photographerId, price, title, video } = data;
+  //Ajout d'un event listener pour la gestion du tri
+  const selection = document.querySelector("select");
+  selection.addEventListener("change", () => {
+    if (selection.value == "Popularité") {
+      let populaire = userPhotos.sort(filtrePopulaire);
+      printMedia(populaire);
+    } else if (selection.value == "Date") {
+      let date = userPhotos.sort(filtreDate);
+      printMedia(date);
+    } else {
+      let titre = userPhotos.sort(filtreTitre);
+      printMedia(titre);
+    };
+  })
 
-    //Création des sections HTML
-    const main = document.getElementById("main");
-    const filter = document.createElement('div');
-    filter.setAttribute("class", "filter");
-    filter.innerHTML = `
-    <div class="filter">
-	  <p>Trier par :</p>
-	  <select>
-		<option>Popularité</option>
-		<option>Date</option>
-		<option>Titre</option>
-	  </select>
-    </div>
-    `
-    const div_content = document.createElement("div");
-    div_content.setAttribute("class", "content");
-    main.appendChild(div_content);
-    /* let nbrLike = 0;
-    for (let i = 0; i < data.length; i++) {
-      nbrLike += data[i].likes;
-    } */
+  function filtrePopulaire(a, b) {
+    return parseInt(b.likes) - parseInt(a.likes);
+  }
 
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].image) {
-        printImage(data[i]);
-      } else {
-        printVideo(data[i]);
-      }
+  function filtreDate(a, b) {
+    return new Date(b.date).valueOf() - new Date(a.date).valueOf();
+  }
+
+  function filtreTitre(a, b) {
+    if (a.title > b.title) {
+      return 1;
+    } else if (b.title > a.title) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
+  //Affichage par défaut par Popularité
+  let defaultPrint = userPhotos.sort(filtrePopulaire);
+  printMedia(defaultPrint);
+}
+
+
+//Affichage des média
+function printMedia(data) {
+  const { date, id, image, likes, photographerId, price, title, video } = data;
+  const div_content = document.querySelector(".content");
+  div_content.innerHTML = ``;
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].image) {
+      let image = new afficherImage(data[i]);
+      image.printImage();
+    } else {
+      let video = new afficherVideo(data[i]);
+      video.printVideo();
     }
   }
 }
+
+
+/* let nbrLike = 0;
+for (let i = 0; i < data.length; i++) {
+nbrLike += data[i].likes;
+} */
