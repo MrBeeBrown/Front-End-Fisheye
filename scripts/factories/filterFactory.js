@@ -1,5 +1,5 @@
-import { afficherImage } from "../factories/imagesFactory.js";
-import { afficherVideo } from "../factories/videoFactory.js";
+import { afficherImage } from "./imagesFactory.js";
+import { afficherVideo } from "./videoFactory.js";
 
 export function photographerMedia(medias, id) {
 

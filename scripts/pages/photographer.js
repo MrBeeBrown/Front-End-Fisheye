@@ -1,6 +1,6 @@
 import { api } from "../api/api.js";
 import { photographerInfo } from "../factories/photographerFactory.js";
-import { photographerMedia } from "../factories/mediaFactory.js"
+import { photographerMedia } from "../factories/filterFactory.js"
 /* import { likes } from "../factories/medias.js";
 import { galerie } from "../factories/medias.js"; */
 
