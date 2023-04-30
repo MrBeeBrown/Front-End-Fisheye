@@ -2,24 +2,6 @@
 const close = document.querySelector(".close_lightBox");
 close.addEventListener("click", closeLightBox);
 
-
-//Mise à jour des likes pour les médias
-export function likes() {
-  const liked = document.querySelectorAll("#heart");
-  let mediaArray = [];
-  liked.forEach((e) => {
-    e.addEventListener("click", () => {
-      if (!mediaArray.includes(e.parentElement.parentElement.parentElement.childNodes[0].alt)) {
-        let update = parseInt(e.parentElement.textContent) + 1;
-        const totalLikes = document.querySelector(".likes");
-        totalLikes.childNodes[0].textContent = parseInt(totalLikes.childNodes[0].textContent) + 1;
-        e.parentElement.childNodes[0].textContent = update.toString();
-        mediaArray.push(e.parentElement.parentElement.parentElement.childNodes[0].alt);
-      }
-    });
-  });
-};
-
 //Création de la galerie d'images
 export function galerie(medias, userId) {
   const lightBox = document.querySelector(".lightBox_data");

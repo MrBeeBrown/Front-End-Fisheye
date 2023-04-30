@@ -1,7 +1,7 @@
 import { afficherImage } from "./imagesFactory.js";
 import { afficherVideo } from "./videoFactory.js";
 
-export function photographerMedia(medias, id) {
+export function photographerMedia(medias, id, price) {
 
   //Récupération des images du photographe en fonction de l'id
   let userPhotos = [];
@@ -50,8 +50,25 @@ export function photographerMedia(medias, id) {
   //Affichage par défaut par Popularité
   let defaultPrint = userPhotos.sort(filtrePopulaire);
   printMedia(defaultPrint);
-}
 
+  //Affichage de l'encart total likes et prix
+  const main = document.querySelector("main");
+  const encart = document.createElement("div");
+  encart.setAttribute("class", "like_price");
+  let totalLikes = 0;
+  userPhotos.forEach((e) => {
+    totalLikes = totalLikes + parseInt(e.likes);
+  })
+  encart.innerHTML = `
+  <div class="likes">
+    <p class="total_likes">${totalLikes}</p>
+    <i class="fa-sharp fa-solid fa-heart"></i>
+  </div>
+  <div class="user__price">
+  <p>${price}€ / jour</p>
+  </div>`
+  main.appendChild(encart);
+}
 
 //Affichage des média
 function printMedia(data) {

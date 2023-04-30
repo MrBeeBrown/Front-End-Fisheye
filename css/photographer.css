@@ -64,7 +64,7 @@
     border-top-left-radius: .5rem;
     border-top-right-radius: .5rem;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -142,14 +142,14 @@ video {
 
 .header_like {
     font-weight: 700;
-    width: 15%;
+    width: 20%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .header_title {
-    width: 85%;
+    width: 80%;
 }
 
 .modal_container {
