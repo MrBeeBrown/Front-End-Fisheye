@@ -1,6 +1,7 @@
 import { api } from "../api/api.js";
 import { photographerInfo } from "../factories/photographerFactory.js";
 import { photographerMedia } from "../factories/filterFactory.js"
+import { showForm } from "../factories/formFactory.js";
 /* import { likes } from "../factories/medias.js";
 import { galerie } from "../factories/medias.js"; */
 
@@ -32,7 +33,14 @@ main.appendChild(div_content);
 //Affichage des médias
 photographerMedia(media, id);
 
-
+//Affichage du formulaire avec selection du photographe
+let user;
+photographers.forEach(u => {
+  if (u.id == id) {
+    user = u;
+  }
+});
+showForm(user.name);
 
 /* likes();
 galerie(media, id); */

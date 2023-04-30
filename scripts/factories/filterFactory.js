@@ -26,14 +26,17 @@ export function photographerMedia(medias, id) {
     };
   })
 
+  //Tri par popularité
   function filtrePopulaire(a, b) {
     return parseInt(b.likes) - parseInt(a.likes);
   }
 
+  //Tri par date
   function filtreDate(a, b) {
     return new Date(b.date).valueOf() - new Date(a.date).valueOf();
   }
 
+  //Tri par titre
   function filtreTitre(a, b) {
     if (a.title > b.title) {
       return 1;
@@ -52,7 +55,6 @@ export function photographerMedia(medias, id) {
 
 //Affichage des média
 function printMedia(data) {
-  const { date, id, image, likes, photographerId, price, title, video } = data;
   const div_content = document.querySelector(".content");
   div_content.innerHTML = ``;
   for (let i = 0; i < data.length; i++) {
