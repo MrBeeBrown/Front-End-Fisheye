@@ -3,7 +3,7 @@ import { photographerInfo } from "../factories/photographerFactory.js";
 import { photographerMedia } from "../factories/filterFactory.js"
 import { showForm } from "../factories/formFactory.js";
 import { likes } from "../factories/likes.js";
-/* import { galerie } from "../factories/medias.js"; */
+import { lightbox } from "../factories/lightBoxFactory.js";
 
 //Récupération de l'id du photographe via l'URL
 const id = new URL(location.href).searchParams.get("id");
@@ -46,7 +46,4 @@ photographerMedia(media, id, user.price);
 //Activation des likes pour les images
 likes();
 
-//Affichage de l'encart avec total likes et prix
-/* priceLikes(media, id, user.price); */
-
-/* galerie(media, id); */
+lightbox(media, id);
