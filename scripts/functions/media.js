@@ -1,5 +1,5 @@
-import { afficherImage } from "./imagesFactory.js";
-import { afficherVideo } from "./videoFactory.js";
+import { afficherImage } from "../factories/imagesFactory.js";
+import { afficherVideo } from "../factories/videoFactory.js";
 
 export function photographerMedia(medias, id, price) {
 
@@ -47,11 +47,11 @@ export function photographerMedia(medias, id, price) {
     }
   }
 
-  //Affichage par défaut par Popularité
+  //Affichage par défaut -> Popularité
   let defaultPrint = userPhotos.sort(filtrePopulaire);
   printMedia(defaultPrint);
 
-  //Affichage de l'encart total likes et prix
+  //Affichage de l'encart total de likes et prix par jour
   const main = document.querySelector("main");
   const encart = document.createElement("div");
   encart.setAttribute("class", "like_price");
@@ -76,17 +76,11 @@ function printMedia(data) {
   div_content.innerHTML = ``;
   for (let i = 0; i < data.length; i++) {
     if (data[i].image) {
-      let image = new afficherImage(data[i]);
-      image.printImage();
+      let images = afficherImage(data[i]);
+      images.printImage();
     } else {
-      let video = new afficherVideo(data[i]);
-      video.printVideo();
+      let videos = afficherVideo(data[i]);
+      videos.printVideo();
     }
   }
 }
-
-
-/* let nbrLike = 0;
-for (let i = 0; i < data.length; i++) {
-nbrLike += data[i].likes;
-} */

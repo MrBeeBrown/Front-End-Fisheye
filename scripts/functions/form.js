@@ -2,8 +2,14 @@ export function showForm(user) {
   const body = document.querySelector("body");
   const formulaire = document.createElement("div");
   formulaire.setAttribute("class", "modal_container");
+  formulaire.setAttribute("role", "dialog");
+  formulaire.setAttribute("aria-labelledby", "Formulaire");
+  formulaire.setAttribute("aria-describedby", "Formulaire de contact");
+  formulaire.setAttribute("aria-hidden", "true");
+  formulaire.setAttribute("aria-modal", "true");
+  formulaire.setAttribute("tabindex", "-1");
   formulaire.innerHTML = `
-  <div class="modal_background">
+  <div class="modal_background" role="document">
     <div class="modal" aria-hidden="true" aria-label="modal" role="dialog">
       <header class="header_form">
         <h2>Contactez-moi</h2>
