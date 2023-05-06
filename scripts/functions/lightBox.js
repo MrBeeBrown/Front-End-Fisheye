@@ -103,14 +103,13 @@ export function lightbox(medias, userId) {
       if (!media[i].hasAttribute("hidden")) {
         media[i].toggleAttribute("hidden");
         i--;
-        if (i == 0) {
+        if (i < 0) {
           i = media.length - 1;
         }
         media[i].toggleAttribute("hidden");
       }
     }
   }
-
 
   //Affichage du média sélectionné
   function showMedia(media) {

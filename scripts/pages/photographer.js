@@ -40,6 +40,7 @@ photographers.forEach(u => {
 });
 showForm(user.name);
 
+
 //Affichage des médias
 photographerMedia(media, id, user.price);
 
