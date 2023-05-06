@@ -1,5 +1,6 @@
 import { afficherImage } from "../factories/imagesFactory.js";
 import { afficherVideo } from "../factories/videoFactory.js";
+import { openLightBox } from "./lightBox.js";
 
 export function photographerMedia(medias, id, price) {
 
@@ -82,5 +83,24 @@ function printMedia(data) {
       let videos = afficherVideo(data[i]);
       videos.printVideo();
     }
+  }
+
+  //Ajout eventListener sur les images pour ouvrir la lightBox
+  const showLightBox = document.querySelectorAll(".lightbox_media");
+  showLightBox.forEach((media) => {
+    media.addEventListener("click", () => {
+      showMedia(media.getAttribute("alt"));
+    });
+  })
+
+  //Affichage du média sélectionné pour lightBox
+  function showMedia(media) {
+    const allMedia = document.querySelectorAll(".media_filter");
+    allMedia.forEach((el) => {
+      if (el.firstElementChild.getAttribute("alt") == media) {
+        el.removeAttribute("hidden");
+        openLightBox();
+      }
+    })
   }
 }

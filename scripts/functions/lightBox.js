@@ -49,14 +49,6 @@ export function lightbox(medias, userId) {
     }
   });
 
-  //Ajout eventListener sur les images pour ouvrir la lightBox
-  const showLightBox = document.querySelectorAll(".lightbox_media");
-  showLightBox.forEach((media) => {
-    media.addEventListener("click", () => {
-      showMedia(media.getAttribute("alt"));
-    });
-  })
-
   //Ajout eventListener pour media suivant
   const next = document.querySelector(".fa-chevron-right");
   next.addEventListener("click", nextImage);
@@ -87,7 +79,7 @@ export function lightbox(medias, userId) {
       if (!media[i].hasAttribute("hidden")) {
         media[i].toggleAttribute("hidden");
         i++;
-        if (i == (media.length - 1)) {
+        if (i == media.length) {
           i = 0
         }
         media[i].toggleAttribute("hidden");
@@ -111,17 +103,6 @@ export function lightbox(medias, userId) {
     }
   }
 
-  //Affichage du média sélectionné
-  function showMedia(media) {
-    const allMedia = document.querySelectorAll(".media_filter");
-    allMedia.forEach((el) => {
-      if (el.firstElementChild.getAttribute("alt") == media) {
-        el.removeAttribute("hidden");
-        openLightBox();
-      }
-    })
-  }
-
   function closeLightBox() {
     const lightBox = document.querySelector(".lightBox_container");
     lightBox.style.display = "none";
@@ -129,11 +110,6 @@ export function lightbox(medias, userId) {
     hideMedia();
   }
 
-  function openLightBox() {
-    const lightBox = document.querySelector(".lightBox_container");
-    lightBox.style.display = "block";
-    lightBox.setAttribute("aria-hidden", "false");
-  }
 
   function hideMedia() {
     const hideAllMedia = document.querySelectorAll(".media_filter");
@@ -143,3 +119,8 @@ export function lightbox(medias, userId) {
   }
 }
 
+export function openLightBox() {
+  const lightBox = document.querySelector(".lightBox_container");
+  lightBox.style.display = "block";
+  lightBox.setAttribute("aria-hidden", "false");
+}
