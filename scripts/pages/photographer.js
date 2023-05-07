@@ -1,6 +1,6 @@
 import { api } from "../api/api.js";
 import { photographerInfo } from "../functions/photographerInfos.js";
-import { photographerMedia } from "../functions/media.js"
+import { photographerMedia } from "../functions/printMedia.js"
 import { showForm } from "../functions/form.js";
 import { likes } from "../functions/likes.js";
 import { lightbox } from "../functions/lightBox.js";
