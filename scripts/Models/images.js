@@ -19,7 +19,7 @@ export class Image {
 		  <div class="header_title">${this.title}</div>
 		  <div class="header_like">
 			  <p class="number_likes">${this.likes}</p>
-			  <i class="fa-sharp fa-solid fa-heart" id="heart"aria-label="likes"></i>
+			  <i class="fa-sharp fa-solid fa-heart" id="heart"aria-label="likes" title="likes"></i>
 		  </div>
 	  </div>`;
     div_content.appendChild(content);
@@ -31,12 +31,12 @@ export class Image {
     content.setAttribute("class", "media_filter");
     content.setAttribute("hidden", "");
     content.innerHTML = `
-	  <img src="/assets/images/${this.image}" alt="${this.title}" aria-label=”image closeup view”>
-	  <div class="media_infos">
-		  <div class="header_title">${this.title}</div>
-		  <div class="header_like">
+	  <img src="/assets/images/${this.image}" alt="${this.title}" aria-label="image closeup view">
+	  <div class="media_infos_lbox">
+		  <div class="header_title_lbox">${this.title}</div>
+		  <div class="header_like_lbox">
 			  <p class="number_likes">${this.likes}</p>
-			  <i class="fa-sharp fa-solid fa-heart" id="heart" aria-label="likes"></i>
+			  <i class="fa-sharp fa-solid fa-heart" id="heart" aria-label="likes" title="likes"></i>
 		  </div>
 	  </div>`;
     lightbox.appendChild(content);

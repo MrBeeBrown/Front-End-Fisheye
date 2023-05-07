@@ -19,7 +19,7 @@ export function photographerInfo(photographers, id) {
     `
     const header_photo = document.querySelector('.photograph-photo');
     header_photo.innerHTML = `
-    <img src="${picture}" alt="Photo of ${name}">
+    <img src="${picture}" alt="${name}" title="${name}">
     `
   }
 }

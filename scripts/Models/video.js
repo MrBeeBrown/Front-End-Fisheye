@@ -21,7 +21,7 @@ export class Video {
 		  <div class="header_title">${this.title}</div>
 		  <div class="header_like">
 			  <p class="number_likes">${this.likes}</p>
-			  <i class="fa-sharp fa-solid fa-heart" id="heart" aria-label="likes"></i>
+			  <i class="fa-sharp fa-solid fa-heart" id="heart" aria-label="likes" title="likes"></i>
 		  </div>
 	  </div>`;
 		div_content.appendChild(content);
@@ -34,13 +34,13 @@ export class Video {
 		content.setAttribute("hidden", "");
 		content.innerHTML = `
 	  <video controls="">
-		  <source src="/assets/images/${this.video}" type="video/mp4"  aria-label=”video closeup view”>
+		  <source src="/assets/images/${this.video}" type="video/mp4"  aria-label="video closeup view">
 	  </video>
-	  <div class="media_infos">
-		  <div class="header_title">${this.title}</div>
-		  <div class="header_like">
+	  <div class="media_infos_lbox">
+		  <div class="header_title_lbox">${this.title}</div>
+		  <div class="header_like_lbox">
 			  <p class="number_likes">${this.likes}</p>
-			  <i class="fa-sharp fa-solid fa-heart" id="heart" aria-label="likes"></i>
+			  <i class="fa-sharp fa-solid fa-heart" id="heart" aria-label="likes" title="likes"></i>
 		  </div>
 	  </div>`;
 		lightbox.appendChild(content);
