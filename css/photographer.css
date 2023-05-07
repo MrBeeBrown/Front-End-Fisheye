@@ -56,7 +56,7 @@
     position: fixed;
     z-index: 2;
     bottom: 0;
-    right: 60px;
+    right: 10%;
     width: 220px;
     height: 20px;
     padding: 1rem;
@@ -105,7 +105,8 @@
 .content {
     margin: 0 100px 100px 100px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    grid-template-columns: 350px 350px 350px;
     column-gap: 2rem;
     row-gap: 6rem;
 }
@@ -115,17 +116,19 @@
 }
 
 .content .media img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
+    width: 350px;
+    height: 300px;
     object-fit: cover;
     cursor: pointer;
+    border-radius: .5rem;
 }
 
 .content .media video {
-    width: 100%;
-    aspect-ratio: 4 / 3;
+    width: 350px;
+    height: 300px;
     object-fit: cover;
     cursor: pointer;
+    border-radius: .5rem;
 }
 
 .media_infos {
@@ -314,6 +317,7 @@ textarea {
 }
 
 .lightBox {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -323,19 +327,24 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    max-width: 1050px;
+    min-width: 300px;
     z-index: 3;
+}
+
+.media_filter {
+    width: 100%;
 }
 
 .lightBox img {
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     aspect-ratio: 4/3;
 }
 
 .lightBox video {
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     aspect-ratio: 4/3;
 }
 
@@ -343,9 +352,14 @@ textarea {
     position: absolute;
     top: 30px;
     right: 30px;
+    color: #901C1C;
+    font-size: 3rem;
 }
 
 .fa-chevron-left,
 .fa-chevron-right {
     cursor: pointer;
+    padding-inline: 3rem;
+    color: #901C1C;
+    font-size: 3rem;
 }

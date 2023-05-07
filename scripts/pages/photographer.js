@@ -14,7 +14,7 @@ const { media, photographers } = await api();
 //Affichage des infos du photographe
 photographerInfo(photographers, id);
 
-//Affichage du filtre
+//Affichage du filtre de tri
 const main = document.getElementById("main");
 const filter = document.createElement('div');
 filter.setAttribute("class", "filter");

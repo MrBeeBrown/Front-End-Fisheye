@@ -1,6 +1,6 @@
-import { afficherImage } from "../factories/imagesFactory.js";
-import { afficherVideo } from "../factories/videoFactory.js";
 import { openLightBox } from "./lightBox.js";
+import { Image } from "../Models/images.js";
+import { Video } from "../Models/video.js";
 
 export function photographerMedia(medias, id, price) {
 
@@ -77,10 +77,10 @@ function printMedia(data) {
   div_content.innerHTML = ``;
   for (let i = 0; i < data.length; i++) {
     if (data[i].image) {
-      let images = afficherImage(data[i]);
+      let images = new Image(data[i]);
       images.printImage();
     } else {
-      let videos = afficherVideo(data[i]);
+      let videos = new Video(data[i]);
       videos.printVideo();
     }
   }

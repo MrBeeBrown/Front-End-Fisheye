@@ -9,8 +9,8 @@ function photographerFactory(data) {
         link.setAttribute("href", `photographer.html?id=${id}`);
         const img = document.createElement('img');
         img.setAttribute("src", picture);
-        img.setAttribute("alt", `Photo of ${name}`);
-        img.setAttribute("aria-label", `Photo of ${name}`);
+        img.setAttribute("alt", `${name}`);
+        img.setAttribute("aria-label", `${name}`);
         const h2 = document.createElement('h2');
         h2.textContent = name;
         const h3 = document.createElement("h3");
@@ -22,8 +22,8 @@ function photographerFactory(data) {
         Price.textContent = price + "€/jour";
         Price.classList.add("price");
         link.appendChild(img);
+        link.appendChild(h2);
         article.appendChild(link);
-        article.appendChild(h2);
         article.appendChild(h3);
         article.appendChild(TagLine);
         article.appendChild(Price);

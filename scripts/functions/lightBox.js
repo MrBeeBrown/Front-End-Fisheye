@@ -1,5 +1,5 @@
-import { afficherImage } from "../factories/imagesFactory.js";
-import { afficherVideo } from "../factories/videoFactory.js";
+import { Image } from "../Models/images.js";
+import { Video } from "../Models/video.js";
 
 //Création de la galerie d'images
 export function lightbox(medias, userId) {
@@ -15,24 +15,23 @@ export function lightbox(medias, userId) {
   box.innerHTML = `
   <div class="lightBox_background" role="document">
     <div class="lightBox">
-      <i class="fa-solid fa-chevron-left fa-2xl"></i>
+      <i class="fa-solid fa-chevron-left" title="previous image"></i>
       <div class="lightBox_data"></div>
-      <i class="fa-solid fa-chevron-right fa-2xl"></i>
-      <i class="fa-solid fa-square-xmark fa-2xl close_lightBox" title="Close"></i>
+      <i class="fa-solid fa-chevron-right" title="next image"></i>
+      <i class="fa-solid fa-square-xmark close_lightBox" title="Close dialog"></i>
     </div>
   </div>`
   body.appendChild(box);
 
-  const lightBox = document.querySelector(".lightBox_data");
   for (let i = 0; i < medias.length; i++) {
     if (medias[i].image) {
       if (medias[i].photographerId == userId) {
-        let images = afficherImage(medias[i]);
+        let images = new Image(medias[i]);
         images.printLightBox();
       }
     } else {
       if (medias[i].photographerId == userId) {
-        let videos = afficherVideo(medias[i]);
+        let videos = new Video(medias[i]);
         videos.printLightBox();
       }
     }
