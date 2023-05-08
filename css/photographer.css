@@ -181,9 +181,7 @@
 
 .modal_container {
     position: fixed;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
+    inset: 0;
     display: none;
     z-index: 3;
 }
