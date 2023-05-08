@@ -1,30 +1,22 @@
 import { openLightBox } from "./lightBox.js";
-import { Image } from "../Models/images.js";
-import { Video } from "../Models/video.js";
+import { Image } from "../Models/Image.js";
+import { Video } from "../Models/Video.js";
 
-export function photographerMedia(medias, id, price) {
+export function printPhotographerMedia(medias, photographer) {
 
-  //Récupération des images du photographe en fonction de l'id
-  let userPhotos = [];
-  medias.forEach((photos) => {
-    if (photos.photographerId == id) {
-      userPhotos.push(photos);
-    }
-  })
+  let result;
 
   //Ajout d'un event listener pour la gestion du tri
   const selection = document.querySelector("select");
   selection.addEventListener("change", () => {
     if (selection.value == "Popularité") {
-      let populaire = userPhotos.sort(filtrePopulaire);
-      printMedia(populaire);
+      result = medias.sort(filtrePopulaire);
     } else if (selection.value == "Date") {
-      let date = userPhotos.sort(filtreDate);
-      printMedia(date);
+      result = medias.sort(filtreDate);
     } else {
-      let titre = userPhotos.sort(filtreTitre);
-      printMedia(titre);
+      result = medias.sort(filtreTitre);
     };
+    printMedia(result);
   })
 
   //Tri par popularité
@@ -49,15 +41,15 @@ export function photographerMedia(medias, id, price) {
   }
 
   //Affichage par défaut -> Popularité
-  let defaultPrint = userPhotos.sort(filtrePopulaire);
-  printMedia(defaultPrint);
+  result = medias.sort(filtrePopulaire);
+  printMedia(result);
 
   //Affichage de l'encart total de likes et prix par jour
   const main = document.querySelector("main");
   const encart = document.createElement("div");
   encart.setAttribute("class", "like_price");
   let totalLikes = 0;
-  userPhotos.forEach((e) => {
+  medias.forEach((e) => {
     totalLikes = totalLikes + parseInt(e.likes);
   })
   encart.innerHTML = `
@@ -66,7 +58,7 @@ export function photographerMedia(medias, id, price) {
     <i class="fa-sharp fa-solid fa-heart"></i>
   </div>
   <div class="user__price">
-  <p>${price}€ / jour</p>
+  <p>${photographer.price}€ / jour</p>
   </div>`
   main.appendChild(encart);
 }
@@ -75,15 +67,19 @@ export function photographerMedia(medias, id, price) {
 function printMedia(data) {
   const div_content = document.querySelector(".content");
   div_content.innerHTML = ``;
-  for (let i = 0; i < data.length; i++) {
-    if (data[i].image) {
-      let images = new Image(data[i]);
+  const lighox_content = document.querySelector(".lightBox_data");
+  lighox_content.innerHTML = ``;
+  data.forEach(m => {
+    if (m.image) {
+      let images = new Image(m);
       images.printImage();
+      images.printLightBox();
     } else {
-      let videos = new Video(data[i]);
+      let videos = new Video(m);
       videos.printVideo();
+      videos.printLightBox();
     }
-  }
+  })
 
   //Ajout eventListener sur les images pour ouvrir la lightBox
   const showLightBox = document.querySelectorAll(".lightbox_media");

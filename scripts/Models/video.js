@@ -38,10 +38,6 @@ export class Video {
 	  </video>
 	  <div class="media_infos_lbox">
 		  <div class="header_title_lbox">${this.title}</div>
-		  <div class="header_like_lbox">
-			  <p class="number_likes">${this.likes}</p>
-			  <i class="fa-sharp fa-solid fa-heart" id="heart" aria-label="likes" title="likes"></i>
-		  </div>
 	  </div>`;
 		lightbox.appendChild(content);
 	}

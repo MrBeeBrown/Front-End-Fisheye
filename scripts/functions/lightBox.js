@@ -1,8 +1,8 @@
-import { Image } from "../Models/images.js";
-import { Video } from "../Models/video.js";
+import { Image } from "../Models/Image.js";
+import { Video } from "../Models/Video.js";
 
 //Création de la galerie d'images
-export function lightbox(medias, userId) {
+export function lightbox() {
   const body = document.querySelector("body");
   const box = document.createElement("div");
   box.setAttribute("class", "lightBox_container");
@@ -22,20 +22,6 @@ export function lightbox(medias, userId) {
     </div>
   </div>`
   body.appendChild(box);
-
-  for (let i = 0; i < medias.length; i++) {
-    if (medias[i].image) {
-      if (medias[i].photographerId == userId) {
-        let images = new Image(medias[i]);
-        images.printLightBox();
-      }
-    } else {
-      if (medias[i].photographerId == userId) {
-        let videos = new Video(medias[i]);
-        videos.printLightBox();
-      }
-    }
-  }
 
   //Icône de fermeture de la lightBox
   const close = document.querySelector(".close_lightBox");

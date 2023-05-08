@@ -1,0 +1,13 @@
+export function showPhotographerInfo(photographer) {
+  const picture = `assets/photographers/${photographer.portrait}`;
+  const header_infos = document.querySelector('.photograph-infos');
+  header_infos.innerHTML = `
+    <h2>${photographer.name}</h2>
+    <h3>${photographer.city}</h3>
+    <p class="tagline">${photographer.tagline}</p>
+    `
+  const header_photo = document.querySelector('.photograph-photo');
+  header_photo.innerHTML = `
+    <img src="${picture}" alt="${photographer.name}" title="${photographer.name}">
+    `
+}

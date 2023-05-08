@@ -1,4 +1,4 @@
-export function showForm(user) {
+export function createForm(user) {
   const body = document.querySelector("body");
   const formulaire = document.createElement("div");
   formulaire.setAttribute("class", "modal_container");
@@ -9,12 +9,12 @@ export function showForm(user) {
   formulaire.setAttribute("aria-modal", "true");
   formulaire.setAttribute("tabindex", "-1");
   formulaire.innerHTML = `
-  <div class="modal_background" role="document">
-    <div class="modal" aria-hidden="true" aria-label="modal" role="dialog">
+  <div class="modal_background"></div>
+  <div class="modal" aria-hidden="true" aria-label="modal" role="dialog" role="document">
       <header class="header_form">
         <h2>Contactez-moi</h2>
         <img src="assets/icons/close.svg" onclick="closeModal()" title="Fermer">
-        <p>${user}</p>
+        <p>${user.name}</p>
       </header>
       <form>
         <div class="formData" data-error="Veuillez entrer 2 caractères minimum et pas de chiffres.">
@@ -36,8 +36,7 @@ export function showForm(user) {
         </div>
         <button type="button" class="send_button">Envoyer</button>
       </form>
-    </div>
-  </div>`
+    </div>`
   body.appendChild(formulaire);
 
   /*** Validation du prénom ***/
