@@ -30,4 +30,24 @@ lightbox();
 printPhotographerMedia(medias, photographer);
 
 //Activation des likes pour les images
-likes();
+/* like() {
+  const liked = document.querySelectorAll("#heart");
+  
+  
+  
+  liked.forEach((e) => {
+    e.addEventListener("click", () => {
+      if (this.liked == false) {
+        this.liked = true;
+        this.likes = this.likes + 1;
+        const totalLikes = document.querySelector(".total_likes");
+        totalLikes.textContent = parseInt(totalLikes.textContent) + 1;
+
+
+        let update = parseInt(e.parentElement.childNodes[1].textContent) + 1;
+        e.parentElement.childNodes[1].textContent = update.toString();
+        mediaArray.push(e.parentElement.parentElement.childNodes[1].textContent);
+      }
+    });
+  });
+}; */

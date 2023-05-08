@@ -10,7 +10,7 @@ export class Image {
     this.liked = false
   }
 
-  printImage() {
+  print() {
     const div_content = document.querySelector(".content");
     const content = document.createElement("div");
     content.setAttribute("class", "media");
@@ -19,14 +19,14 @@ export class Image {
 	  <div class="media_infos">
 		  <div class="header_title">${this.title}</div>
 		  <div class="header_like">
-			  <p class="number_likes">${this.likes}</p>
-			  <i class="fa-sharp fa-solid fa-heart" id="heart"aria-label="likes" title="likes"></i>
+			  <p class="${this.id}">${this.likes}</p>
+			  <i class="fa-sharp fa-solid fa-heart" id="${this.id}" aria-label="likes" title="likes"></i>
 		  </div>
 	  </div>`;
     div_content.appendChild(content);
   }
 
-  printLightBox() {
+  lightbox() {
     const lightbox = document.querySelector(".lightBox_data");
     const content = document.createElement("div");
     content.setAttribute("class", "media_filter");
@@ -39,36 +39,26 @@ export class Image {
     lightbox.appendChild(content);
   }
 
-  likes() {
-    const liked = document.querySelectorAll("#heart");
-    let mediaArray = [];
-    liked.forEach((e) => {
-      e.addEventListener("click", () => {
-        if (!mediaArray.includes(e.parentElement.parentElement.childNodes[1].textContent)) {
-          let update = parseInt(e.parentElement.childNodes[1].textContent) + 1;
-          const totalLikes = document.querySelector(".total_likes");
-          totalLikes.textContent = parseInt(totalLikes.textContent) + 1;
-          e.parentElement.childNodes[1].textContent = update.toString();
-          mediaArray.push(e.parentElement.parentElement.childNodes[1].textContent);
-        }
-      });
-    });
-  };
-}
-
-/* //Mise à jour des likes pour les médias
-export function likes() {
-  const liked = document.querySelectorAll("#heart");
-  let mediaArray = [];
-  liked.forEach((e) => {
-    e.addEventListener("click", () => {
-      if (!mediaArray.includes(e.parentElement.parentElement.childNodes[1].textContent)) {
-        let update = parseInt(e.parentElement.childNodes[1].textContent) + 1;
+  like() {
+    const liked = document.getElementById(`${this.id}`);
+    liked.addEventListener("click", () => {
+      if (this.liked == false) {
+        this.likes = parseInt(this.likes) + 1;
+        const updatedLike = document.getElementsByClassName(`${this.id}`);
+        updatedLike[0].innerText = this.likes;
         const totalLikes = document.querySelector(".total_likes");
         totalLikes.textContent = parseInt(totalLikes.textContent) + 1;
-        e.parentElement.childNodes[1].textContent = update.toString();
-        mediaArray.push(e.parentElement.parentElement.childNodes[1].textContent);
+        liked.classList.add("red_heart");
+        this.liked = true;
+      } else {
+        this.likes = parseInt(this.likes) - 1;
+        const updatedLike = document.getElementsByClassName(`${this.id}`);
+        updatedLike[0].innerText = this.likes;
+        const totalLikes = document.querySelector(".total_likes");
+        totalLikes.textContent = parseInt(totalLikes.textContent) - 1;
+        liked.classList.remove("red_heart");
+        this.liked = false;
       }
-    });
-  });
-}; */
+    })
+  }
+}

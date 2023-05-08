@@ -65,19 +65,26 @@ export function printPhotographerMedia(medias, photographer) {
 
 //Affichage des média
 function printMedia(data) {
+  //On vide le contenu de la page avant mise à jour des médias
   const div_content = document.querySelector(".content");
   div_content.innerHTML = ``;
+
+  //On vide le contenu de la lightbox avant mise à jour des médias
   const lighox_content = document.querySelector(".lightBox_data");
   lighox_content.innerHTML = ``;
+
+  //Affichage des médias
   data.forEach(m => {
     if (m.image) {
       let images = new Image(m);
-      images.printImage();
-      images.printLightBox();
+      images.print();
+      images.like();
+      images.lightbox();
     } else {
       let videos = new Video(m);
-      videos.printVideo();
-      videos.printLightBox();
+      videos.print();
+      videos.like();
+      videos.lightbox();
     }
   })
 
