@@ -169,14 +169,6 @@ export function createForm(user) {
 
     const modal = document.querySelector(".message_modal_container");
     modal.style.display = "block";
-
-    //detect Escape key press
-    const escapeKey = document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        messageBox.setAttribute("aria-hidden", "false");
-        messageBox.style.display = "none";
-      }
-    });
   }
 
 }

@@ -213,7 +213,7 @@
     inset: 0;
     width: 100vw;
     height: 100vh;
-    display: none;
+    display: block;
     background-color: #3f3d3d7a;
 }
 
