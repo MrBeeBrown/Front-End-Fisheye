@@ -2,7 +2,7 @@ import { Image } from "../Models/Image.js";
 import { Video } from "../Models/Video.js";
 
 //Création de la galerie d'images
-export function lightbox() {
+export function createLightbox() {
   const body = document.querySelector("body");
   const box = document.createElement("div");
   box.setAttribute("class", "lightBox_container");

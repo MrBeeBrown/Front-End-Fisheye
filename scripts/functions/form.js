@@ -117,7 +117,8 @@ export function createForm(user) {
 
   function validationSubmit() {
     if ((validFirst) && (validLast) && (validEmail) && (validMessage)) {
-      submitFormData(getPrenom.value, getNom.value, getMail.value, getMessage.value);
+      messageModal(getPrenom.value, getNom.value, getMail.value, getMessage.value);
+      closeModal();
     } else {
       for (let i = 0; i < formData.length; i++) {
         let getHiddenError = "";
@@ -129,29 +130,37 @@ export function createForm(user) {
     }
   };
 
-  function submitFormData() {
-    console.log("Nom : " + getPrenom.value);
-    console.log("Prénom : " + getNom.value);
-    console.log("Email : " + getMail.value);
-    console.log("Message : " + getMessage.value);
-    closeModal();
-  }
-
   function messageModal(prenom, nom, email, message) {
+    const body = document.querySelector("body");
     const messageBox = document.createElement("div");
-    messageBox.setAttribute("class", "message_modal");
+    messageBox.setAttribute("class", "message_modal_container");
+    messageBox.setAttribute("role", "dialog");
+    messageBox.setAttribute("aria-labelledby", "Message");
+    messageBox.setAttribute("aria-describedby", "Message");
+    messageBox.setAttribute("aria-hidden", "false");
+    messageBox.setAttribute("aria-modal", "true");
+    messageBox.setAttribute("tabindex", "-1");
     messageBox.innerHTML = `
     <div class="message_modal" aria-hidden="true" aria-labelledby="message_modal" role="dialog" role="document">
-        <header class="message_modal" id="message_modal">
-          <h2>Votre message à bien été réceptionné ${nom} ${prenom}</h2>
+        <header class="message_modal_header" id="message_modal_header">
+          <h2>Votre message à bien été réceptionné ${nom} - ${prenom}</h2>
         </header>
         <div class="user_infos">
           <p id="user_email">Votre adresse email : ${email}</p>
-          <p id="user_message">Votre message : </p>
-          <p id="message_content">${message}</p>
+          <p id="user_message">Votre message : ${message}</p>
         </div>
         <button id="close_message_modal" aria-label="close message modal">Fermer</button>
     </div>`
+    body.appendChild(messageBox);
+
+    const closeMessageModalbtn = document.querySelector("#close_message_modal");
+    closeMessageModalbtn.addEventListener("click", () => {
+      messageBox.setAttribute("aria-hidden", "false");
+      messageBox.style.display = "none";
+    });
+
+    const modal = document.querySelector(".message_modal_container");
+    modal.style.display = "block";
   }
 
   function showError(_check) {
@@ -161,5 +170,7 @@ export function createForm(user) {
   function hideError(_check) {
     _check.parentElement.setAttribute("data-error-visible", "false");
   };
+
+
 }
 

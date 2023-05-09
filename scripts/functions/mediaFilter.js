@@ -1,6 +1,6 @@
 import { printPhotographerMedia } from "./printMedia.js";
 
-export function filterMedia(medias, photographer) {
+export function filteredMedia(medias, photographer) {
 
   let result;
 

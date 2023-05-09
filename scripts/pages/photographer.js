@@ -2,8 +2,8 @@ import { api } from "../api/api.js";
 import { showPhotographerInfo } from "../functions/showPhotographerInfo.js";
 import { printPhotographerMedia } from "../functions/printMedia.js"
 import { createForm } from "../functions/form.js";
-import { lightbox } from "../functions/lightBox.js";
-import { filterMedia } from "../functions/mediaFilter.js";
+import { createLightbox } from "../functions/lightBox.js";
+import { filteredMedia } from "../functions/mediaFilter.js";
 
 //Récupération de l'id du photographe via l'URL
 const id = new URL(location.href).searchParams.get("id");
@@ -24,10 +24,10 @@ showPhotographerInfo(photographer);
 createForm(photographer);
 
 //Création de la lightBox
-lightbox();
+createLightbox();
 
 //Affichage en fonction de la sélection du filtre de tri
-filterMedia(medias, photographer);
+filteredMedia(medias, photographer);
 
 //Affichage des médias du photographe
 printPhotographerMedia(medias, photographer);
