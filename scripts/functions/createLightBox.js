@@ -89,6 +89,8 @@ export function createLightbox() {
   }
 
   function closeLightBox() {
+    const main = document.querySelector("main");
+    main.style.display = "block";
     const lightBox = document.querySelector(".lightBox_container");
     lightBox.style.display = "none";
     lightBox.setAttribute("aria-hidden", "true");
@@ -105,6 +107,8 @@ export function createLightbox() {
 }
 
 export function openLightBox() {
+  const main = document.querySelector("main");
+  main.style.display = "none";
   const lightBox = document.querySelector(".lightBox_container");
   lightBox.style.display = "block";
   lightBox.setAttribute("aria-hidden", "false");
