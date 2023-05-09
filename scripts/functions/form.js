@@ -9,8 +9,7 @@ export function createForm(user) {
   formulaire.setAttribute("aria-modal", "true");
   formulaire.setAttribute("tabindex", "-1");
   formulaire.innerHTML = `
-  <div class="modal_background"></div>
-  <div class="modal" aria-hidden="true" aria-label="modal" role="dialog" role="document">
+  <div class="modal" aria-hidden="true" aria-label="modal" aria-labelledby="message_modal" role="dialog" role="document">
       <header class="header_form">
         <h2>Contactez-moi</h2>
         <img src="assets/icons/close.svg" onclick="closeModal()" title="Fermer">
@@ -118,7 +117,7 @@ export function createForm(user) {
 
   function validationSubmit() {
     if ((validFirst) && (validLast) && (validEmail) && (validMessage)) {
-      submitFormData();
+      submitFormData(getPrenom.value, getNom.value, getMail.value, getMessage.value);
     } else {
       for (let i = 0; i < formData.length; i++) {
         let getHiddenError = "";
@@ -138,6 +137,23 @@ export function createForm(user) {
     closeModal();
   }
 
+  function messageModal(prenom, nom, email, message) {
+    const messageBox = document.createElement("div");
+    messageBox.setAttribute("class", "message_modal");
+    messageBox.innerHTML = `
+    <div class="message_modal" aria-hidden="true" aria-labelledby="message_modal" role="dialog" role="document">
+        <header class="message_modal" id="message_modal">
+          <h2>Votre message à bien été réceptionné ${nom} ${prenom}</h2>
+        </header>
+        <div class="user_infos">
+          <p id="user_email">Votre adresse email : ${email}</p>
+          <p id="user_message">Votre message : </p>
+          <p id="message_content">${message}</p>
+        </div>
+        <button id="close_message_modal" aria-label="close message modal">Fermer</button>
+    </div>`
+  }
+
   function showError(_check) {
     _check.parentElement.setAttribute("data-error-visible", "true");
   };
@@ -146,3 +162,4 @@ export function createForm(user) {
     _check.parentElement.setAttribute("data-error-visible", "false");
   };
 }
+
