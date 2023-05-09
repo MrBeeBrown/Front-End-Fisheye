@@ -1,4 +1,4 @@
-import { printPhotographerMedia } from "./printMedia.js";
+import { printPhotographerMedia } from "./printPhotographerMedia.js";
 
 export function filteredMedia(medias, photographer) {
 

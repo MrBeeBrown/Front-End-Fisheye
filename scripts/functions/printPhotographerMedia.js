@@ -1,4 +1,4 @@
-import { openLightBox } from "./lightBox.js";
+import { openLightBox } from "./createLightBox.js";
 import { mediaFactory } from "../factories/mediaFactory.js";
 
 export function printPhotographerMedia(medias) {

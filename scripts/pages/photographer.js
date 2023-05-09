@@ -1,9 +1,9 @@
 import { api } from "../api/api.js";
 import { showPhotographerInfo } from "../functions/showPhotographerInfo.js";
-import { printPhotographerMedia } from "../functions/printMedia.js"
-import { createForm } from "../functions/form.js";
-import { createLightbox } from "../functions/lightBox.js";
-import { filteredMedia } from "../functions/mediaFilter.js";
+import { printPhotographerMedia } from "../functions/printPhotographerMedia.js"
+import { createForm } from "../functions/createForm.js";
+import { createLightbox } from "../functions/createLightBox.js";
+import { filteredMedia } from "../functions/filteredMedia.js";
 
 //Récupération de l'id du photographe via l'URL
 const id = new URL(location.href).searchParams.get("id");
