@@ -4,9 +4,9 @@ import { Video } from "../Models/Video.js";
 export function mediaFactory(media) {
   if (media.image) {
     let image = new Image(media);
-    image.printImage();
+    return image.printImage();
   } else {
     let video = new Video(media);
-    video.printVideo();
+    return video.printVideo();
   }
 }

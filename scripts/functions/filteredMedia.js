@@ -8,38 +8,28 @@ export function filteredMedia(medias, photographer) {
   const selection = document.querySelector("select");
   selection.addEventListener("change", () => {
     if (selection.value == "Popularité") {
-      result = medias.sort(filtrePopulaire);
+      //Tri par popularité
+      result = medias.sort((a, b) => { return parseInt(b.likes) - parseInt(a.likes) });
     } else if (selection.value == "Date") {
-      result = medias.sort(filtreDate);
+      //Tri par date
+      result = medias.sort((a, b) => { return new Date(b.date).valueOf() - new Date(a.date).valueOf() });
     } else {
-      result = medias.sort(filtreTitre);
+      //Tri par titre
+      result = medias.sort((a, b) => {
+        if (a.title > b.title) {
+          return 1;
+        } else if (b.title > a.title) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
     };
     printPhotographerMedia(result);
   })
 
-  //Tri par popularité
-  function filtrePopulaire(a, b) {
-    return parseInt(b.likes) - parseInt(a.likes);
-  }
-
-  //Tri par date
-  function filtreDate(a, b) {
-    return new Date(b.date).valueOf() - new Date(a.date).valueOf();
-  }
-
-  //Tri par titre
-  function filtreTitre(a, b) {
-    if (a.title > b.title) {
-      return 1;
-    } else if (b.title > a.title) {
-      return -1;
-    } else {
-      return 0;
-    }
-  }
-
   //Affichage par défaut -> Popularité
-  result = medias.sort(filtrePopulaire);
+  result = medias.sort((a, b) => { return parseInt(b.likes) - parseInt(a.likes) });
   printPhotographerMedia(result);
 
   //Affichage de l'encart total de likes et prix par jour
