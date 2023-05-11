@@ -12,7 +12,7 @@ export function createForm(user) {
   <div class="modal" aria-hidden="true" aria-label="modal" aria-labelledby="message_modal" role="dialog" role="document">
       <header class="header_form">
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" title="Fermer">
+        <img src="assets/icons/close.svg" onclick="closeModal()" title="Close Contact Form">
         <p>${user.name}</p>
       </header>
       <form>
@@ -67,12 +67,45 @@ export function createForm(user) {
   let validEmail = false;
   let validMessage = false;
 
+  //Selection des éléments focusable
+  let focusableItems = [];
+  const modal = document.querySelector(".modal");
+  const input = modal.querySelectorAll("input");
+  input.forEach(e => focusableItems.push(e));
+  const textarea = modal.querySelector("textarea");
+  focusableItems.push(textarea);
+  const btn = modal.querySelector("button");
+  focusableItems.push(btn);
+  const closeBtn = modal.querySelector("img");
+  focusableItems.push(closeBtn);
+
   //detect Escape key press
-  const escapeKey = document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" || e.key === "Esc") {
       closeModal();
     }
+    if (e.key === "Tab" && formulaire !== null) {
+      focusInModal(e);
+    }
   });
+
+  function focusInModal(e) {
+    e.preventDefault();
+    console.log(focusableItems);
+    let index = focusableItems.findIndex(f => f === modal.querySelector(`:focus`));
+    if (e.shiftKey === true) {
+      index--;
+    } else {
+      index++;
+    }
+    if (index >= focusableItems.length) {
+      index = 0;
+    }
+    if (index < 0) {
+      index = focusableItems.length - 1;
+    }
+    focusableItems[index].focus();
+  }
 
   function validatePrenom() {
     const RegExPrenom = /[0-9|._]+/;
@@ -172,4 +205,3 @@ export function createForm(user) {
   }
 
 }
-

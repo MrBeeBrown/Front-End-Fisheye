@@ -29,5 +29,25 @@ createLightbox();
 //Affichage en fonction de la sélection du filtre de tri
 filteredMedia(medias, photographer);
 
-//Affichage des médias du photographe
+//Affichage de l'encart total de likes et prix par jour
 printPhotographerMedia(medias, photographer);
+
+//Affichage de l'encart total likes et prix photographe
+photographerSection(medias);
+
+function photographerSection(medias) {
+  const main = document.querySelector("main");
+  const encart = document.createElement("div");
+  encart.setAttribute("class", "like_price");
+  let totalLikes = 0;
+  medias.map(e => totalLikes = totalLikes + parseInt(e.likes))
+  encart.innerHTML = `
+   <div class="likes">
+     <p class="total_likes">${totalLikes}</p>
+     <i class="fa-sharp fa-solid fa-heart"></i>
+   </div>
+   <div class="user__price">
+   <p>${photographer.price}€ / jour</p>
+   </div>`
+  main.appendChild(encart);
+}

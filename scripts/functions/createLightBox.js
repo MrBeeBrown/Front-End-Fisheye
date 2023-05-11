@@ -1,6 +1,3 @@
-import { Image } from "../Models/Image.js";
-import { Video } from "../Models/Video.js";
-
 //Création de la galerie d'images
 export function createLightbox() {
   const body = document.querySelector("body");
@@ -29,7 +26,7 @@ export function createLightbox() {
 
   //Detection de la touche Escape
   const escapeKey = document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
+    if (e.key === "Escape" || e.key === "Esc") {
       closeLightBox();
     }
   });
