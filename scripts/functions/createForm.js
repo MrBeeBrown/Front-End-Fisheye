@@ -12,7 +12,7 @@ export function createForm(user) {
   <div class="modal" aria-hidden="true" aria-label="modal" aria-labelledby="message_modal" role="dialog" role="document">
       <header class="header_form">
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" title="Close Contact Form">
+        <img src="assets/icons/close.svg" onclick="closeModal()" title="Close Contact Form" tabindex="1">
         <p>${user.name}</p>
       </header>
       <form>
@@ -76,8 +76,8 @@ export function createForm(user) {
   focusableItems.push(textarea);
   const btn = modal.querySelector("button");
   focusableItems.push(btn);
-  const closeBtn = modal.querySelector("img");
-  focusableItems.push(closeBtn);
+  /* const closeBtn = modal.querySelector("img");
+  focusableItems.push(closeBtn); */
 
   //detect Escape key press
   window.addEventListener("keydown", (e) => {
@@ -91,7 +91,6 @@ export function createForm(user) {
 
   function focusInModal(e) {
     e.preventDefault();
-    console.log(focusableItems);
     let index = focusableItems.findIndex(f => f === modal.querySelector(`:focus`));
     if (e.shiftKey === true) {
       index--;
@@ -140,9 +139,10 @@ export function createForm(user) {
   };
 
   function validateMessage() {
-    showError(getMessage);
-    validMessage = false;
-    if (getMessage.value.length > 0) {
+    if (getMessage.value.trim().length == 0) {
+      showError(getMessage);
+      validMessage = false;
+    } else {
       hideError(getMessage);
       validMessage = true;
     }
@@ -150,7 +150,7 @@ export function createForm(user) {
 
   function validationSubmit() {
     if ((validFirst) && (validLast) && (validEmail) && (validMessage)) {
-      messageModal(getPrenom.value, getNom.value, getMail.value, getMessage.value);
+      messageModal(getPrenom.value, getNom.value, getMail.value, getMessage.value.trim());
       closeModal();
     } else {
       for (let i = 0; i < formData.length; i++) {
@@ -184,7 +184,7 @@ export function createForm(user) {
     messageBox.innerHTML = `
     <div class="message_modal" aria-hidden="true" aria-labelledby="message_modal" role="dialog" role="document">
         <header class="message_modal_header" id="message_modal_header">
-          <h2>Votre message à bien été réceptionné ${nom} - ${prenom}</h2>
+          <h2>Vos informations réceptionnéés ${nom} - ${prenom}</h2>
         </header>
         <div class="user_infos">
           <p id="user_email">Votre adresse email : ${email}</p>
