@@ -3,7 +3,8 @@ import { showPhotographerInfo } from "../functions/showPhotographerInfo.js";
 import { printPhotographerMedia } from "../functions/printPhotographerMedia.js"
 import { createForm } from "../functions/createForm.js";
 import { createLightbox } from "../functions/createLightBox.js";
-import { filteredMedia } from "../functions/filteredMedia.js";
+import { filterMedia } from "../functions/filteredMedia.js";
+import { mediaFactory } from "../factories/mediaFactory.js";
 
 //Récupération de l'id du photographe via l'URL
 const id = new URL(location.href).searchParams.get("id");
@@ -15,7 +16,7 @@ const { media, photographers } = await api();
 const photographer = photographers.find(p => p.id == id);
 
 //Sélection des médias du photographe
-const medias = media.filter(m => m.photographerId == id);
+const medias = media.filter(m => m.photographerId == id).map(m => mediaFactory(m));
 
 //Affichage des infos du photographe
 showPhotographerInfo(photographer);
@@ -27,15 +28,15 @@ createForm(photographer);
 createLightbox();
 
 //Affichage en fonction de la sélection du filtre de tri
-filteredMedia(medias, photographer);
+filterMedia(medias);
 
 //Affichage de l'encart total de likes et prix par jour
 printPhotographerMedia(medias, photographer);
 
 //Affichage de l'encart total likes et prix photographe
-photographerSection(medias);
+printPhotographerSection(medias);
 
-function photographerSection(medias) {
+function printPhotographerSection(medias) {
   const main = document.querySelector("main");
   const encart = document.createElement("div");
   encart.setAttribute("class", "like_price");

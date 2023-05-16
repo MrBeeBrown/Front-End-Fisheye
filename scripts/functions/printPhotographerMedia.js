@@ -1,5 +1,4 @@
 import { openLightBox } from "./createLightBox.js";
-import { mediaFactory } from "../factories/mediaFactory.js";
 
 export function printPhotographerMedia(medias) {
 
@@ -12,7 +11,10 @@ export function printPhotographerMedia(medias) {
   lighox_content.innerHTML = ``;
 
   //Affichage des médias sur page + lightbox + activation likes
-  medias.map(media => mediaFactory(media));
+  medias.forEach(e => {
+    e.print();
+    e.like();
+  });
 
   //Ajout eventListener sur les images pour ouvrir la lightBox
   const showLightBox = document.querySelectorAll(".lightbox_media");
