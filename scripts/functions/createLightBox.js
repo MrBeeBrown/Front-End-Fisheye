@@ -12,10 +12,10 @@ export function createLightbox() {
   box.innerHTML = `
   <div class="lightBox_background" role="document">
     <div class="lightBox">
-      <i class="fa-solid fa-chevron-left" title="previous image"></i>
+      <a><i class="fa-solid fa-chevron-left" title="previous image"></i></a>
       <div class="lightBox_data"></div>
-      <i class="fa-solid fa-chevron-right" title="next image"></i>
-      <i class="fa-solid fa-square-xmark close_lightBox" title="Close dialog"></i>
+      <a><i class="fa-solid fa-chevron-right" title="next image"></i></a>
+      <a><i class="fa-solid fa-square-xmark close_lightBox" title="Close dialog"></i></a>
     </div>
   </div>`
   body.appendChild(box);
@@ -100,6 +100,39 @@ export function createLightbox() {
     hideAllMedia.forEach((e) => {
       e.setAttribute("hidden", "");
     })
+  }
+
+  //Selection des éléments focusable
+  let focusableItems = [];
+  const lightBox = document.querySelector(".lightBox");
+  const left = lightBox.querySelector(".fa-chevron-left");
+  focusableItems.push(left);
+  const right = lightBox.querySelector(".fa-chevron-right");
+  focusableItems.push(right);
+  const closeBtn = lightBox.querySelector(".close_lightBox");
+  focusableItems.push(closeBtn);
+
+  //Detection Echap et tabulation
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Tab") {
+      focusInLightbox(e);
+    }
+  });
+
+  function focusInLightbox(e) {
+    let index = focusableItems.findIndex(f => f === lightBox.querySelector(`:focus`));
+    if (e.shiftKey === true) {
+      index--;
+    } else {
+      index++;
+    }
+    if (index >= focusableItems.length) {
+      index = 0;
+    }
+    if (index < 0) {
+      index = focusableItems.length - 1;
+    }
+    focusableItems[index].focus();
   }
 }
 

@@ -33,7 +33,7 @@ export function createForm(user) {
           <textarea class="text-control" id="message" class="message" title="message" name="message"
             rows="6"></textarea>
         </div>
-        <button type="button" class="send_button">Envoyer</button>
+        <a><button type="button" class="send_button">Envoyer</button></a>
       </form>
     </div>`
   body.appendChild(formulaire);
@@ -76,10 +76,10 @@ export function createForm(user) {
   focusableItems.push(textarea);
   const btn = modal.querySelector("button");
   focusableItems.push(btn);
-  /* const closeBtn = modal.querySelector("img");
-  focusableItems.push(closeBtn); */
+  const closeBtn = modal.querySelector("img");
+  focusableItems.push(closeBtn);
 
-  //detect Escape key press
+  //Detection Echap et tabulation
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape" || e.key === "Esc") {
       closeModal();

@@ -21,4 +21,37 @@ async function init() {
     displayData(photographers);
 }
 
+
 init();
+
+//Selection des éléments focusable
+let focusableItems = [];
+const body = document.querySelector("body");
+const logo = body.querySelector(".logo");
+focusableItems.push(logo);
+const article = body.querySelectorAll(".article");
+article.forEach(e => focusableItems.push(e));
+console.log(focusableItems);
+
+//Detection Echap et tabulation
+window.addEventListener("keydown", (e) => {
+    if (e.key === "Tab") {
+        focusInIndex(e);
+    }
+});
+
+function focusInIndex(e) {
+    let index = focusableItems.findIndex(f => f === body.querySelector(`:focus`));
+    if (e.shiftKey === true) {
+        index--;
+    } else {
+        index++;
+    }
+    if (index >= focusableItems.length) {
+        index = 0;
+    }
+    if (index < 0) {
+        index = focusableItems.length - 1;
+    }
+    focusableItems[index].focus();
+}
