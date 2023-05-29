@@ -116,6 +116,7 @@ export function createLightbox() {
   window.addEventListener("keydown", (e) => {
     if (e.key === "Tab") {
       focusInLightbox(e);
+      console.log(e);
     }
   });
 
