@@ -12,8 +12,7 @@ export class Video extends Media {
     const photographeContent = document.createElement("div");
     photographeContent.setAttribute("class", "media");
     photographeContent.innerHTML = `
-    <div class="video_info">Video</div>
-		<video class="lightbox_media">
+    <video class="lightbox_media">
 			<source src="/assets/images/${this.video}" type="video/mp4">
 		</video>
 		<div class="media_infos">

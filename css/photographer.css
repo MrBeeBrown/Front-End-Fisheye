@@ -148,18 +148,6 @@ select {
     width: 100%;
 }
 
-.video_info {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background-color: #901C1C;
-    color: white;
-    padding: .5rem;
-    font-weight: bold;
-    font-size: .9rem;
-    border-radius: .3rem;
-}
-
 .content .media img {
     width: 350px;
     height: 300px;

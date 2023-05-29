@@ -102,7 +102,7 @@ export function createLightbox() {
     })
   }
 
-  //Selection des éléments focusable
+  /* //Selection des éléments focusable
   let focusableItems = [];
   const lightBox = document.querySelector(".lightBox");
   const left = lightBox.querySelector(".fa-chevron-left");
@@ -134,7 +134,7 @@ export function createLightbox() {
       index = focusableItems.length - 1;
     }
     focusableItems[index].focus();
-  }
+  } */
 }
 
 export function openLightBox() {

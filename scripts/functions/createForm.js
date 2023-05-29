@@ -12,7 +12,7 @@ export function createForm(user) {
   <div class="modal" aria-hidden="true" aria-label="modal" aria-labelledby="message_modal" role="dialog" role="document">
       <header class="header_form">
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" title="Close Contact Form" tabindex="1">
+        <a><img src="assets/icons/close.svg" onclick="closeModal()" title="Close Contact Form" tabindex="1"></a>
         <p>${user.name}</p>
       </header>
       <form>
@@ -33,7 +33,7 @@ export function createForm(user) {
           <textarea class="text-control" id="message" class="message" title="message" name="message"
             rows="6"></textarea>
         </div>
-        <a><button type="button" class="send_button">Envoyer</button></a>
+        <button type="button" class="send_button">Envoyer</button>
       </form>
     </div>`
   body.appendChild(formulaire);
