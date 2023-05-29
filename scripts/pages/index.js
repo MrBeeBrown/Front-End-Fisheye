@@ -31,7 +31,6 @@ const logo = body.querySelector(".logo");
 focusableItems.push(logo);
 const article = body.querySelectorAll(".article");
 article.forEach(e => focusableItems.push(e));
-console.log(focusableItems);
 
 //Detection Echap et tabulation
 window.addEventListener("keydown", (e) => {
