@@ -26,7 +26,7 @@ export function createForm(user) {
         </div>
         <div class="formData" data-error="L'adresse mail saisie n'est pas correcte.">
           <label for="email">Email</label>
-          <input class="text-control" type="text" id="email" class="email" title="email">
+          <input class="text-control" type="text" id="email" class="email" title="email" autocomplete="off">
         </div>
         <div class="formData" data-error="Merci de renseigner votre message.">
           <label for="message">Votre message</label>

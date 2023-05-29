@@ -21,13 +21,13 @@ function photographerFactory(data) {
         const Price = document.createElement("p");
         Price.textContent = price + "€/jour";
         Price.classList.add("price");
-        link.appendChild(img);
-        link.appendChild(h2);
-        article.appendChild(link);
+        article.appendChild(img);
+        article.appendChild(h2);
         article.appendChild(h3);
         article.appendChild(TagLine);
         article.appendChild(Price);
-        return (article);
+        link.appendChild(article);
+        return (link);
     }
     return { name, picture, getUserCardDOM }
 }
