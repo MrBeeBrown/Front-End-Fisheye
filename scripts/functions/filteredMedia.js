@@ -13,12 +13,15 @@ export function filterMedia(medias) {
     filterList.classList.add("visible");
   })
 
-  /* document.onclick = function (event) {
-    console.log(event);
+  document.onclick = function (event) {
     if (event.target.closest(".bloc-links")) {
       return;
     }
-  } */
+    /* else {
+      btnFilter.style.display = "flex";
+      filterList.style.display = "none";
+    } */
+  }
 
   //Ajout d'un event listener pour la liste de tri
   const filterValue = document.querySelectorAll(".media-filter");

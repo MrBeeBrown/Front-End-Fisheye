@@ -12,14 +12,14 @@ export class Video extends Media {
     const photographeContent = document.createElement("div");
     photographeContent.setAttribute("class", "media");
     photographeContent.innerHTML = `
-    <video class="lightbox_media">
+    <video class="lightbox_media" tabindex="0">
 			<source src="/assets/images/${this.video}" type="video/mp4">
 		</video>
 		<div class="media_infos">
 			<div class="header_title">${this.title}</div>
 			<div class="header_like">
 				<p class="${this.id}">${this.likes}</p>
-				<i class="fa-sharp fa-solid fa-heart" id="${this.id}" aria-label="likes" title="likes"></i>
+				<i class="fa-sharp fa-solid fa-heart" id="${this.id}" aria-label="likes" title="likes" tabindex="0"></i>
 			</div>
 		</div>`;
     div_content.appendChild(photographeContent);

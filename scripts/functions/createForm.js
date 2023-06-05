@@ -84,7 +84,7 @@ export function createForm(user) {
     if (e.key === "Escape" || e.key === "Esc") {
       closeModal();
     }
-    if (e.key === "Tab" && formulaire !== null) {
+    if (e.key === "Tab" && (formulaire.getAttribute("aria-hidden") == "false")) {
       focusInModal(e);
     }
     if (e.key === "Enter" && (document.activeElement === closeBtn)) {

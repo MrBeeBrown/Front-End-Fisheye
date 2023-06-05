@@ -9,14 +9,13 @@ export function createLightbox() {
   box.setAttribute("aria-hidden", "true");
   box.setAttribute("aria-modal", "true");
   box.style.display = "none";
-  /* box.setAttribute("tabindex", "-1"); */
   box.innerHTML = `
   <div class="lightBox_background" role="document">
     <div class="lightBox">
-      <a><i class="fa-solid fa-chevron-left" title="previous image"></i></a>
+      <i class="fa-solid fa-chevron-left" title="previous image" tabindex="0"></i>
       <div class="lightBox_data"></div>
-      <a><i class="fa-solid fa-chevron-right" title="next image"></i></a>
-      <a><i class="fa-solid fa-square-xmark close_lightBox" title="Close dialog"></i></a>
+      <i class="fa-solid fa-chevron-right" title="next image" tabindex="0"></i>
+      <i class="fa-solid fa-square-xmark close_lightBox" title="Close dialog" tabindex="0"></i>
     </div>
   </div>`
   body.appendChild(box);
@@ -28,11 +27,15 @@ export function openLightBox() {
   const lightBox = document.querySelector(".lightBox_container");
   lightBox.style.display = "block";
   lightBox.setAttribute("aria-hidden", "false");
-  /* lightBox.removeAttribute("tabindex"); */
 
   //Icône de fermeture de la lightBox
   const close = document.querySelector(".close_lightBox");
   close.addEventListener("click", closeLightBox);
+  close.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      closeLightBox();
+    }
+  })
 
   //Detection de la touche Escape
   const escapeKey = document.addEventListener("keydown", (e) => {
@@ -44,6 +47,11 @@ export function openLightBox() {
   //Ajout eventListener pour media suivant
   const next = document.querySelector(".fa-chevron-right");
   next.addEventListener("click", nextImage);
+  next.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      nextImage();
+    }
+  });
 
   //Detection de la touche fleche droite
   const nextKey = document.addEventListener("keydown", (e) => {
@@ -55,10 +63,15 @@ export function openLightBox() {
   //Ajout eventListener pour media précédent
   const prev = document.querySelector(".fa-chevron-left");
   prev.addEventListener("click", prevImage);
+  prev.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      prevImage();
+    }
+  });
 
   //Detection de la touche fleche gauche
   const prevKey = document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") {
+    if (e.key === "ArrowLeft" || e.key === "Enter") {
       prevImage();
     }
   });

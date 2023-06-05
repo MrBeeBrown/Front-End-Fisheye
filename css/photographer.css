@@ -156,6 +156,7 @@ main {
 }
 
 .bloc-links ul li a {
+    display: block;
     text-decoration: none;
     color: white;
     padding-left: 1rem;
@@ -165,11 +166,6 @@ main {
 
 .bloc-links ul li hr {
     width: 90%;
-}
-
-.visible {
-    transform-origin: top;
-    transform: scaleY(100%);
 }
 
 .content {
@@ -192,6 +188,7 @@ main {
     object-fit: cover;
     cursor: pointer;
     border-radius: .5rem;
+    border: none;
 }
 
 .content .media video {
