@@ -8,7 +8,8 @@ export function createLightbox() {
   box.setAttribute("aria-describedby", "Galerie d'images");
   box.setAttribute("aria-hidden", "true");
   box.setAttribute("aria-modal", "true");
-  box.setAttribute("tabindex", "-1");
+  box.style.display = "none";
+  /* box.setAttribute("tabindex", "-1"); */
   box.innerHTML = `
   <div class="lightBox_background" role="document">
     <div class="lightBox">
@@ -19,6 +20,15 @@ export function createLightbox() {
     </div>
   </div>`
   body.appendChild(box);
+}
+
+export function openLightBox() {
+  const main = document.querySelector("main");
+  main.style.display = "none";
+  const lightBox = document.querySelector(".lightBox_container");
+  lightBox.style.display = "block";
+  lightBox.setAttribute("aria-hidden", "false");
+  /* lightBox.removeAttribute("tabindex"); */
 
   //Icône de fermeture de la lightBox
   const close = document.querySelector(".close_lightBox");
@@ -101,46 +111,4 @@ export function createLightbox() {
       e.setAttribute("hidden", "");
     })
   }
-
-  /* //Selection des éléments focusable
-  let focusableItems = [];
-  const lightBox = document.querySelector(".lightBox");
-  const left = lightBox.querySelector(".fa-chevron-left");
-  focusableItems.push(left);
-  const right = lightBox.querySelector(".fa-chevron-right");
-  focusableItems.push(right);
-  const closeBtn = lightBox.querySelector(".close_lightBox");
-  focusableItems.push(closeBtn);
-
-  //Detection Echap et tabulation
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Tab") {
-      focusInLightbox(e);
-      console.log(e);
-    }
-  });
-
-  function focusInLightbox(e) {
-    let index = focusableItems.findIndex(f => f === lightBox.querySelector(`:focus`));
-    if (e.shiftKey === true) {
-      index--;
-    } else {
-      index++;
-    }
-    if (index >= focusableItems.length) {
-      index = 0;
-    }
-    if (index < 0) {
-      index = focusableItems.length - 1;
-    }
-    focusableItems[index].focus();
-  } */
-}
-
-export function openLightBox() {
-  const main = document.querySelector("main");
-  main.style.display = "none";
-  const lightBox = document.querySelector(".lightBox_container");
-  lightBox.style.display = "block";
-  lightBox.setAttribute("aria-hidden", "false");
 }

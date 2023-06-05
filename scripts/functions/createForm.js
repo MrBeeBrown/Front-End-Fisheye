@@ -7,7 +7,7 @@ export function createForm(user) {
   formulaire.setAttribute("aria-describedby", "Formulaire de contact");
   formulaire.setAttribute("aria-hidden", "true");
   formulaire.setAttribute("aria-modal", "true");
-  formulaire.setAttribute("tabindex", "-1");
+  formulaire.style.display = "none";
   formulaire.innerHTML = `
   <div class="modal" aria-hidden="true" aria-label="modal" aria-labelledby="message_modal" role="dialog" role="document">
       <header class="header_form">
@@ -86,6 +86,9 @@ export function createForm(user) {
     }
     if (e.key === "Tab" && formulaire !== null) {
       focusInModal(e);
+    }
+    if (e.key === "Enter" && (document.activeElement === closeBtn)) {
+      closeModal();
     }
   });
 

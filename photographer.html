@@ -27,18 +27,38 @@
       <div class="photograph-photo"></div>
     </div>
     <div class="filter">
-      <label for="Tri">Trier par</label>
-      <select aria-labelledby="Tri" id="Tri">
-        <option value="Popularité">Popularité</option>
-        <option value="Date">Date</option>
-        <option value="Titre">Titre</option>
-      </select>
+      <p>Trier par</p>
+      <div class="dropdown">
+        <button type="button" class="button-top" aria-haspopup="true" aria-expanded="true">
+          <span class="active-filter">Popularité</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="bloc-links" style="display: none;">
+          <ul role="menu" aria-labelledby="filtre">
+            <li>
+              <a href="#" class="media-filter" role="menuitem" tabindex="-1">Popularité</a>
+              <i class="fa-solid fa-chevron-up"></i>
+            </li>
+            <li>
+              <hr>
+            </li>
+            <li>
+              <a href="#" class="media-filter" role="menuitem" tabindex="-1">Date</a>
+            </li>
+            <li>
+              <hr>
+            </li>
+            <li>
+              <a href="#" class="media-filter" role="menuitem" tabindex="-1">Titre</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="content"></div>
   </main>
   <script src="/scripts/pages/photographer.js" type="module"></script>
   <script src="/scripts/utils/contactForm.js"></script>
-  <!-- <script src="/scripts/functions/select.js"></script> -->
 </body>
 
 </html>

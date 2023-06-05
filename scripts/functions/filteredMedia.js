@@ -4,13 +4,34 @@ export function filterMedia(medias) {
 
   let result;
 
-  //Ajout d'un event listener pour la gestion du tri
-  const selection = document.querySelector("select");
-  selection.addEventListener("change", () => {
-    if (selection.value == "Popularité") {
+  //Ajout d'un event listener pour le clic du bouton de tri
+  const filterList = document.querySelector(".bloc-links");
+  const btnFilter = document.querySelector(".button-top");
+  btnFilter.addEventListener("click", () => {
+    btnFilter.style.display = "none";
+    filterList.removeAttribute("style");
+    filterList.classList.add("visible");
+  })
+
+  /*   document.addEventListener("click", function (event) {
+      if ((filterList.classList.contains("visible")) && (event.target.closest(".bloc-links"))) return;
+      btnFilter.style.display = "block";
+      filterList.style.display = "none";
+    }) */
+
+  //Ajout d'un event listener pour la liste de tri
+  const filterValue = document.querySelectorAll(".media-filter");
+  const btnContent = document.querySelector(".active-filter");
+  filterValue.forEach(value => value.addEventListener("click", () => {
+    btnContent.innerHTML = ``;
+    btnContent.innerHTML = value.innerHTML;
+    filterList.style.display = "none";
+    filterList.classList.remove("visible");
+    btnFilter.style.display = "flex";
+    if (value.innerHTML == "Popularité") {
       //Tri par popularité
       result = medias.sort((a, b) => { return parseInt(b.likes) - parseInt(a.likes) });
-    } else if (selection.value == "Date") {
+    } else if (value.innerHTML == "Date") {
       //Tri par date
       result = medias.sort((a, b) => { return new Date(b.date).valueOf() - new Date(a.date).valueOf() });
       result.map(e => console.log(e.date));
@@ -27,7 +48,7 @@ export function filterMedia(medias) {
       });
     };
     printPhotographerMedia(result);
-  })
+  }))
 
   //Affichage par défaut -> Popularité
   result = medias.sort((a, b) => { return parseInt(b.likes) - parseInt(a.likes) });
