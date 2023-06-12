@@ -57,9 +57,11 @@ main {
 }
 
 .contact_button:hover,
-.contact_button:focus {
+.contact_button:focus,
+.contact_button:active {
     background-color: #DB8876;
     color: black;
+    box-shadow: 0 9px 9px #312E2E;
 }
 
 .like_price {
@@ -126,6 +128,12 @@ main {
     border-radius: .3rem;
     cursor: pointer;
     padding-inline: 1rem;
+}
+
+.button-top:hover,
+.button-top:focus,
+.button-top:active {
+    box-shadow: 0 9px 9px #312E2E;
 }
 
 .bloc-links {
@@ -408,6 +416,12 @@ textarea {
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.send_button:hover,
+.send_button:focus,
+.send_button:active {
+    box-shadow: 0 9px 9px #312E2E;
 }
 
 .lightBox_container {
