@@ -12,7 +12,9 @@ export class Image extends Media {
     const photographeContent = document.createElement("div");
     photographeContent.setAttribute("class", "media");
     photographeContent.innerHTML = `
-    <a href="#"><img src="/assets/images/${this.image}" alt="${this.title}" class="lightbox_media"></a>
+    <a href="#" data-title="${this.title}" class="lightbox_link">
+      <img src="/assets/images/${this.image}" alt="${this.title}" class="lightbox_media">
+    </a>
     <div class="media_infos">
       <div class="header_title">${this.title}</div>
       <div class="header_like">
