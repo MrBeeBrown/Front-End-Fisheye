@@ -19,7 +19,6 @@ export function printPhotographerMedia(medias) {
   //Ajout eventListener sur les images pour ouvrir la lightBox
   const showLightBox = document.querySelectorAll(".lightbox_link");
   showLightBox.forEach((m) => {
-    console.log(m);
     m.addEventListener("click", () => {
       showMedia(m.getAttribute("data-title"));
     });

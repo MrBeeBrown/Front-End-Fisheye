@@ -19,7 +19,9 @@ export class Image extends Media {
       <div class="header_title">${this.title}</div>
       <div class="header_like">
         <p class="${this.id}">${this.likes}</p>
-        <a href="#"><i class="fa-sharp fa-solid fa-heart" id="${this.id}" aria-label="likes" title="likes"></i></a>
+        <a href="#" id="${this.id}" class="heart_links">
+          <i class="fa-sharp fa-solid fa-heart" aria-label="likes" title="likes"></i>
+        </a>
       </div>
     </div>`;
     div_content.appendChild(photographeContent);

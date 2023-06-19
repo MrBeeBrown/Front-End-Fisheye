@@ -136,6 +136,21 @@ main {
     box-shadow: 0 9px 9px #312E2E;
 }
 
+.lightbox_link {
+    display: flex;
+    border-radius: .5rem;
+}
+
+.heart_links {
+    color: dimgray;
+}
+
+.lightbox_link:hover,
+.lightbox_link:focus,
+.lightbox_link:active {
+    box-shadow: 0 9px 9px #312E2E;
+}
+
 .bloc-links {
     position: absolute;
     top: 0;

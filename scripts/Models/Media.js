@@ -10,13 +10,21 @@ export class Media {
   }
 
   like() {
+
+
     //Création des eventListener pour les likes
     const liked = document.getElementById(`${this.id}`);
+
     if (this.liked) {
       liked.classList.toggle("red_heart");
     }
 
     liked.addEventListener("click", () => {
+      function scrolling(el) {
+        console.log(el);
+        window.scrollBy(0, el);
+      }
+      const scrolledY = window.scrollY;
       if (!this.liked) {
         this.likes = parseInt(this.likes) + 1;
         const updatedLike = document.getElementsByClassName(`${this.id}`);
@@ -34,6 +42,7 @@ export class Media {
         liked.classList.toggle("red_heart");
         this.liked = false;
       }
+      scrolling(scrolledY);
     })
   }
 }
