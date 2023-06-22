@@ -10,8 +10,6 @@ export class Media {
   }
 
   like() {
-
-
     //Création des eventListener pour les likes
     const liked = document.getElementById(`${this.id}`);
 
@@ -19,30 +17,21 @@ export class Media {
       liked.classList.toggle("red_heart");
     }
 
-    liked.addEventListener("click", () => {
-      function scrolling(el) {
-        console.log(el);
-        window.scrollBy(0, el);
-      }
-      const scrolledY = window.scrollY;
+    liked.addEventListener("click", (e) => {
+      e.preventDefault();
+      const updatedLike = document.getElementsByClassName(`${this.id}`);
+      const totalLikes = document.querySelector(".total_likes");
       if (!this.liked) {
         this.likes = parseInt(this.likes) + 1;
-        const updatedLike = document.getElementsByClassName(`${this.id}`);
-        updatedLike[0].innerText = this.likes;
-        const totalLikes = document.querySelector(".total_likes");
         totalLikes.textContent = parseInt(totalLikes.textContent) + 1;
-        liked.classList.toggle("red_heart");
         this.liked = true;
       } else {
         this.likes = parseInt(this.likes) - 1;
-        const updatedLike = document.getElementsByClassName(`${this.id}`);
-        updatedLike[0].innerText = this.likes;
-        const totalLikes = document.querySelector(".total_likes");
         totalLikes.textContent = parseInt(totalLikes.textContent) - 1;
-        liked.classList.toggle("red_heart");
         this.liked = false;
       }
-      scrolling(scrolledY);
+      updatedLike[0].innerText = this.likes;
+      liked.classList.toggle("red_heart");
     })
   }
 }

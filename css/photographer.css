@@ -143,6 +143,7 @@ main {
 
 .heart_links {
     color: dimgray;
+    padding: .2rem;
 }
 
 .lightbox_link:hover,
@@ -260,14 +261,14 @@ main {
 
 .header_like {
     font-weight: 700;
-    width: 15%;
+    width: 20%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .header_title {
-    width: 85%;
+    width: 80%;
 }
 
 .header_title_lbox {

@@ -13,15 +13,20 @@ export function filterMedia(medias) {
     filterList.classList.add("visible");
   })
 
-  document.onclick = function (event) {
-    if (event.target.closest(".bloc-links")) {
-      return;
-    }
-    /* else {
+  document.addEventListener("click", function (event) {
+    if (!event.target.closest(".dropdown")) {
       btnFilter.style.display = "flex";
       filterList.style.display = "none";
-    } */
-  }
+    }
+  })
+
+  document.addEventListener("keydown", (e) => {
+    if ((e.key === "Escape" || e.key === "Esc") && filterList.classList.contains("visible")) {
+      btnFilter.style.display = "flex";
+      filterList.style.display = "none";
+    }
+  })
+
 
   //Ajout d'un event listener pour la liste de tri
   const filterValue = document.querySelectorAll(".media-filter");
