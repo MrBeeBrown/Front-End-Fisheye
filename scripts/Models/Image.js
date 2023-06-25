@@ -20,7 +20,7 @@ export class Image extends Media {
       <div class="header_like">
         <p class="${this.id}">${this.likes}</p>
         <a href="#" id="${this.id}" class="heart_links">
-          <i class="fa-sharp fa-solid fa-heart" aria-label="likes" title="likes"></i>
+          <i class="fa-sharp fa-solid fa-heart" title="likes"></i>
         </a>
       </div>
     </div>`;

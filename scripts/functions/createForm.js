@@ -3,7 +3,7 @@ export function createForm(user) {
   const formulaire = document.createElement("div");
   formulaire.setAttribute("class", "modal_container");
   formulaire.setAttribute("role", "dialog");
-  formulaire.setAttribute("aria-labelledby", "Formulaire");
+  formulaire.setAttribute("aria-label", "Formulaire");
   formulaire.setAttribute("aria-describedby", "Formulaire de contact");
   formulaire.setAttribute("aria-hidden", "true");
   formulaire.setAttribute("aria-modal", "true");

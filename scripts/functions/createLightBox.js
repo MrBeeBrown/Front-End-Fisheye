@@ -4,7 +4,7 @@ export function createLightbox() {
   const box = document.createElement("div");
   box.setAttribute("class", "lightBox_container");
   box.setAttribute("role", "dialog");
-  box.setAttribute("aria-labelledby", "LightBox");
+  box.setAttribute("aria-label", "LightBox");
   box.setAttribute("aria-describedby", "Galerie d'images");
   box.setAttribute("aria-hidden", "true");
   box.setAttribute("aria-modal", "true");
@@ -55,7 +55,7 @@ export function openLightBox() {
 
   //Detection de la touche fleche droite
   const nextKey = document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") {
+    if (e.key === "ArrowRight" || e.key === "Enter") {
       nextImage();
     }
   });

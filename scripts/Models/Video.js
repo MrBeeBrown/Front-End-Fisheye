@@ -12,7 +12,7 @@ export class Video extends Media {
     const photographeContent = document.createElement("div");
     photographeContent.setAttribute("class", "media");
     photographeContent.innerHTML = `
-    <a href="#" data-title="${this.title}" class="lightbox_link">
+    <a href="#" data-title="${this.title}" title="${this.title}" class="lightbox_link">
       <video class="lightbox_media">
 			  <source src="/assets/images/${this.video}" type="video/mp4">
 		  </video>
@@ -22,7 +22,7 @@ export class Video extends Media {
 			<div class="header_like">
 				<p class="${this.id}">${this.likes}</p>
 				<a href="#" id="${this.id}"  class="heart_links">
-          <i class="fa-sharp fa-solid fa-heart" aria-label="likes" title="likes"></i>
+          <i class="fa-sharp fa-solid fa-heart" title="likes"></i>
         </a>
 			</div>
 		</div>`;
@@ -35,7 +35,7 @@ export class Video extends Media {
     lightboxContent.setAttribute("hidden", "");
     lightboxContent.innerHTML = `
 		<video controls="" alt="${this.title}">
-			<source src="/assets/images/${this.video}" type="video/mp4"  aria-label="video closeup view">
+			<source src="/assets/images/${this.video}" type="video/mp4"  title="video closeup view">
 		</video>
 		<div class="media_infos_lbox">
 			<div class="header_title_lbox">${this.title}</div>
