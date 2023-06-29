@@ -1,6 +1,6 @@
 import { openLightBox } from "./createLightBox.js";
 
-export function printPhotographerMedia(medias) {
+export const printPhotographerMedia = (medias) => {
 
   //On vide le contenu de la page avant mise à jour des médias
   const div_content = document.querySelector(".content");
@@ -25,7 +25,7 @@ export function printPhotographerMedia(medias) {
   })
 
   //Affichage du média sélectionné pour lightBox
-  function showMedia(media) {
+  const showMedia = (media) => {
     const allMedia = document.querySelectorAll(".media_filter");
     allMedia.forEach((el) => {
       if (el.firstElementChild.getAttribute("alt") == media) {

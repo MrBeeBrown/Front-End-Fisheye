@@ -1,4 +1,4 @@
-export function showPhotographerInfo(photographer) {
+export const showPhotographerInfo = (photographer) => {
   const picture = `assets/photographers/${photographer.portrait}`;
   const header_infos = document.querySelector('.photograph-infos');
   header_infos.innerHTML = `

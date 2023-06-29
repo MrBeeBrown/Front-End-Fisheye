@@ -1,5 +1,5 @@
 //Création de la galerie d'images
-export function createLightbox() {
+export const createLightbox = () => {
   const body = document.querySelector("body");
   const box = document.createElement("div");
   box.setAttribute("class", "lightBox_container");
@@ -21,7 +21,7 @@ export function createLightbox() {
   body.appendChild(box);
 }
 
-export function openLightBox() {
+export const openLightBox = () => {
   const main = document.querySelector("main");
   main.style.display = "none";
   const lightBox = document.querySelector(".lightBox_container");
@@ -118,7 +118,7 @@ export function openLightBox() {
   }
 
 
-  function hideMedia() {
+  const hideMedia = () => {
     const hideAllMedia = document.querySelectorAll(".media_filter");
     hideAllMedia.forEach((e) => {
       e.setAttribute("hidden", "");

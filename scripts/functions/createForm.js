@@ -1,4 +1,4 @@
-export function createForm(user) {
+export const createForm = (user) => {
   const body = document.querySelector("body");
   const formulaire = document.createElement("div");
   formulaire.setAttribute("class", "modal_container");
@@ -92,7 +92,7 @@ export function createForm(user) {
     }
   });
 
-  function focusInModal(e) {
+  const focusInModal = (e) => {
     e.preventDefault();
     let index = focusableItems.findIndex(f => f === modal.querySelector(`:focus`));
     if (e.shiftKey === true) {
@@ -107,7 +107,7 @@ export function createForm(user) {
       index = focusableItems.length - 1;
     }
     focusableItems[index].focus();
-  }
+  };
 
   function validatePrenom() {
     const RegExPrenom = /[0-9|._]+/;
@@ -118,7 +118,7 @@ export function createForm(user) {
       hideError(getPrenom);
       validFirst = true;
     }
-  }
+  };
 
   function validateNom() {
     const RegExNom = /[0-9|._]+/;
@@ -166,15 +166,15 @@ export function createForm(user) {
     }
   };
 
-  function showError(_check) {
+  const showError = (_check) => {
     _check.parentElement.setAttribute("data-error-visible", "true");
   };
 
-  function hideError(_check) {
+  const hideError = (_check) => {
     _check.parentElement.setAttribute("data-error-visible", "false");
   };
 
-  function messageModal(prenom, nom, email, message) {
+  const messageModal = (prenom, nom, email, message) => {
     console.log(nom);
     console.log(prenom);
     console.log(email);
